@@ -6,7 +6,20 @@ This is an early source release. M0–M4 are implemented; M5 independent release
 
 ## Install
 
-Download this repository as a ZIP and extract it, or clone its URL. Open a terminal in the extracted project directory.
+Download this repository as a ZIP and extract it, or clone it:
+
+```sh
+git clone https://github.com/syakovac-spec/python-verification-companion.git
+cd python-verification-companion
+```
+
+The evidence core alone can also be installed directly from the public URL into an activated Python environment:
+
+```sh
+python -m pip install "git+https://github.com/syakovac-spec/python-verification-companion.git"
+```
+
+Clone the repository for the full RTL examples, simulation runners, tests and documentation; the installed Python package contains the evidence core.
 
 The qualified simulation environment is Ubuntu 22.04 x86-64 (including WSL2), Python 3.10, Icarus Verilog/vvp 11.0. The Python evidence core also has test results on Windows Python 3.10.7. Native Windows simulation/solver support is not qualified.
 
