@@ -1,0 +1,15 @@
+.venv*/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+sim_build/
+.pytest_cache/
+*.vcd
+*.vvp
+results.xml
+evidence/*/
+!evidence/m0/
+evidence/m0/*
+!evidence/m0/environment-freeze.txt
