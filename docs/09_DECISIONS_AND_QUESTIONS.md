@@ -33,6 +33,12 @@ Public project name and hosting account; licensing/ownership; desired commercial
 
 ## Decision entry template
 
+## Extension decisions — 2026-10-28
+
+- **ADR-025, implemented:** add a narrow public EvidenceRecorder for protocol-independent bookkeeping. Monitors and contract scoreboards retain ownership of observation, prediction, correlation and pending state. Preserve the existing schema and conservative closure rules; use standard pyuvm composition rather than another UVM framework.
+- **ADR-026, demonstrated:** use an elastic ready/valid buffer as a second protocol example with source/sink/passive agent roles, shared independent model and both pyuvm and plain-cocotb entry points. Good DUTs close the four declared goals; deliberate data corruption fails ORDER in both styles. The example uses seeded bounded Python random data; solver constraints and recorded replay remain demonstrated by APB. No general AXI VIP or automatic protocol replay is claimed.
+- **ADR-027, environment:** qualify Python 3.11.18 and stable Icarus 13.0 from v13_0 in isolated installations, retaining cocotb 1.9.2, pyuvm 5.0.0 and PyVSC 0.9.6.37412289187. Exact final results and source digests belong in evidence/python311-icarus13-summary.json. This expands tested combinations without asserting support for an unavailable external DUT or all simulator features.
+
 ## Implementation decisions — 2026-10-26
 
 - **ADR-022, M4:** replay ordered timestamped pin drives rather than rerun response-dependent sequences. Preserve functional-sampling boundaries and finalization time; reject changed source/configuration/dependency/tool/seed identities and corrupt artifacts. Fresh replay run IDs reference their originals. Import guards prevent use of the stimulus solver/agent during replay, and qualification requires exact pin, observation and checker-record matches.

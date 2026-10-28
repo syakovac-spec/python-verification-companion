@@ -10,7 +10,9 @@ Read README.md, STATUS.md, docs/09_DECISIONS_AND_QUESTIONS.md, and the current m
 
 ## Engineering rules
 
-- Inspect installed/pinned dependency APIs and official documentation. Every API in this pack is proposed unless explicitly identified as an external library API.
+When adapting to a new DUT/interface, read docs/17_EXTENDING_TO_OTHER_INTERFACES.md. Start a protocol-specific environment using standard pyuvm components and the public EvidenceRecorder API; do not force a new bus into APB. Preserve independently sampled observations, explicit contract models, constrained stimulus, checked functional goals, and negative checker qualification. examples/ready_valid demonstrates source/sink/passive composition and a plain-cocotb path.
+
+- Inspect installed/pinned dependency APIs and official documentation. Historical design sketches remain proposals; use the implemented public APIs documented in docs/14_EVIDENCE_CORE.md and docs/17_EXTENDING_TO_OTHER_INTERFACES.md and their executable examples.
 - Use pyuvm for UVM structure. Do not reimplement its factory, phasing or transaction library inside this package.
 - Keep evidence types, validation, merging and reporting importable without a simulator or pyuvm installed.
 - Use narrow public adapters; avoid monkey patches and private dependency internals.

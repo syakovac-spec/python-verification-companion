@@ -1,6 +1,6 @@
 # Architecture
 
-All interfaces below are proposals. Verify external library APIs before implementing adapters.
+This document retains the original architectural proposals. The implemented evidence API is documented in docs/14_EVIDENCE_CORE.md; the public EvidenceRecorder and standard pyuvm/plain-cocotb composition are documented in docs/17_EXTENDING_TO_OTHER_INTERFACES.md. Use those executable interfaces when extending the package. Unimplemented layers below remain proposals.
 
 ## Layers and ownership
 

@@ -1,8 +1,12 @@
 # Python Verification Companion
 
-A verification evidence core and working APB example for cocotb and pyuvm. It connects independently observed DUT behavior, checker results, functional coverage, bounded coverage closure, and recorded-stimulus replay.
+A protocol-independent verification evidence core with working APB and ready/valid examples for cocotb and pyuvm. It connects independently observed DUT behavior, checker results, functional coverage, bounded coverage closure, and recorded-stimulus replay.
 
-This is an early source release. M0–M4 are implemented; M5 independent release qualification and the plain-cocotb adapter remain pending. It is not an official cocotb/pyuvm project or a signoff certification.
+This is an early source release. M0–M4 are implemented; M5 release hardening remains pending. A plain-cocotb example now shares the streaming scoreboard and evidence schema with the pyuvm example. It is not an official cocotb/pyuvm project or a signoff certification.
+
+## Use with your own DUT
+
+Read [Extending to other buses and interfaces](docs/17_EXTENDING_TO_OTHER_INTERFACES.md) for the UVM component map, implementation steps, protocol-specific considerations, and a copyable coding-agent prompt. Start with `examples/ready_valid` for reusable source/sink/passive agents and monitor-to-scoreboard connections. Use the APB example for solver-backed constraints, bounded coverage targeting and recorded replay. The public `EvidenceRecorder` API lets either approach write checked evidence without changing the core.
 
 ## Install
 
@@ -21,7 +25,7 @@ python -m pip install "git+https://github.com/syakovac-spec/python-verification-
 
 Clone the repository for the full RTL examples, simulation runners, tests and documentation; the installed Python package contains the evidence core.
 
-The qualified simulation environment is Ubuntu 22.04 x86-64 (including WSL2), Python 3.10, Icarus Verilog/vvp 11.0. The Python evidence core also has test results on Windows Python 3.10.7. Native Windows simulation/solver support is not qualified.
+The original qualified simulation environment is Ubuntu 22.04 x86-64 (including WSL2), Python 3.10, Icarus Verilog/vvp 11.0. See [Python 3.11 / Icarus 13 qualification](docs/18_TOOLCHAIN_QUALIFICATION.md) for the additional toolchain and exact results. The Python evidence core also has test results on Windows Python 3.10.7. Native Windows simulation/solver support is not qualified.
 
 Install Python's venv support and Icarus if needed:
 
@@ -53,6 +57,7 @@ python3 -m venv .venv-linux
 .venv-linux/bin/python examples/apb_peripheral/run_suite.py
 .venv-linux/bin/python examples/apb_peripheral/run_suite.py --m3
 .venv-linux/bin/python examples/apb_peripheral/run_suite.py --m4
+.venv-linux/bin/python examples/ready_valid/run.py
 ```
 
 The direct simulation dependencies are pinned. The recorded development environment's full version snapshot is `evidence/m0/environment-freeze.txt`; use it instead of `requirements-sim.txt` when reproducing that dependency set. It includes optional investigation tools and is not a hash-locked manifest. Source packaging and a fresh core installation are checked separately from full fresh-machine simulation qualification.
@@ -67,11 +72,15 @@ The direct simulation dependencies are pinned. The recorded development environm
 
 M4 local qualification contains 15 cases: baseline/replay, six mutant/replay pairs, and interruption accounting. All seven replays matched pin traces, samples and checker records. 47 unit tests passed on Windows and Linux. These are results from the recorded environment, not guarantees for every platform.
 
+The additional Python 3.11.18 / Icarus 13.0 run qualified all 32 simulation cases across APB and ready/valid, including intended negative detections. All 57 current unit tests passed in both the simulation environment and a fresh core-only installation. See the [qualification report](docs/18_TOOLCHAIN_QUALIFICATION.md) for scope and reproduction.
+
 Suite commands return success when their qualification expectations are met. Mutants intentionally retain failed raw evidence gates; deliberate gaps remain incomplete. Each invocation writes a new evidence directory and a latest.json pointer.
 
 ## Documentation
 
 - [Evidence core and CLI](docs/14_EVIDENCE_CORE.md)
+- [Extend to another bus or interface](docs/17_EXTENDING_TO_OTHER_INTERFACES.md)
+- [Python 3.11 / Icarus 13 qualification](docs/18_TOOLCHAIN_QUALIFICATION.md)
 - [APB checking and functional coverage](docs/15_APB_RESULTS_AND_CLOSURE.md)
 - [Replay and mutations](docs/16_REPLAY_AND_MUTATIONS.md)
 - [Implementation milestones](docs/06_IMPLEMENTATION_PLAN.md)

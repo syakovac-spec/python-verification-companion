@@ -56,3 +56,7 @@ python scripts/qualify_core.py
 ```
 
 The qualification script records exact commands, output, status, platform, and optional-module absence in `evidence/m1/core-<platform>.json`. It checks the fixtures and all four CLI operations, including deliberate invalid and incompatible inputs. The semantic tests target false closure, correlation mistakes, duplicate imports, thresholds, resets, schema corruption, and failure retention.
+
+## Protocol-independent recording API
+
+`from verification_evidence import EvidenceRecorder` exposes the standard-library-only recording boundary for new interfaces. Construct it with a declared Catalog and Manifest, call `observe` from independently sampled activity, call `evaluate` from the scoreboard with exact event IDs, and call `finish` with pending obligation counts or an execution error. The recorder validates the finalized bundle and does not allow a caller to override failed checks with a pass. Monitoring alone does not earn checked closure. See [the extension guide](17_EXTENDING_TO_OTHER_INTERFACES.md) and `examples/ready_valid` for complete working integration in pyuvm and plain cocotb.
