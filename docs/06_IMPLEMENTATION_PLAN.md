@@ -46,6 +46,8 @@ Acceptance: a fresh user can run the full documented pilot; core and both adapte
 
 ## M6 — Selective expansion
 
+The prioritized [extension TODO backlog](20_EXTENSION_BACKLOG.md), recorded 2026-10-29, expands this milestone into individually scoped items EXT-01 through EXT-10 with acceptance criteria. Start performance measurement early; the recommended deliverables are a reusable agent/scoreboard kit, performance/scalability improvements backed by measurements, and an AXI-Lite reference environment. Separate Icarus, encrypted-model and SV-UVM interoperability workstreams must not become package prerequisites. This is future work and does not close the remaining M5 criteria.
+
 Prioritize measured gaps: selected UCIS interchange, simulator-native metrics, commercial simulators, register integration, another protocol, gate-level profiles, broader temporal checking, optional AI tool interface. Each capability gets a bounded contract, executable probe and acceptance gate. Do not treat M6 as a single task.
 
 ## Follow-on prompts

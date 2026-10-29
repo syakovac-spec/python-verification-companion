@@ -1,5 +1,9 @@
 # Publication candidate status
 
+## Planned extensions — 2026-10-29
+
+The owner-requested [extension TODO backlog](docs/20_EXTENSION_BACKLOG.md) records agent generation, reusable scoreboards and sampling adapters, coverage planning/closure, performance benchmarks, build caching/parallel regressions, scalable evidence, additional protocols, register abstraction and failure triage/replay. It includes priorities, dependencies and acceptance criteria, plus separate Icarus, encrypted-model and SV-UVM interoperability workstreams. All are recorded as future work; no implementation or qualification status is changed by this documentation update. Recommended deliverables are the agent/scoreboard kit, a measured performance/scalability baseline, and an AXI-Lite reference environment. Existing M5 release-hardening work remains open.
+
 ## Portability and VCS sampling race — 2026-10-29
 
 Fixed the VCS-reported RisingEdge race: monitors read HDL acceptance snapshots after ReadOnly, the streaming driver uses captured valid/ready/reset, and APB captures pre-update SCRATCH state for early-side-effect checks. Missing stream capture handles are rejected. Three scheduler counterexamples exercise post-update live pins and missing capture. The full 65-test unit suite passes on Windows Python 3.10 and Linux Python 3.11/3.12, including a fresh core-only installation without optional simulator/solver packages.

@@ -87,6 +87,7 @@ Suite commands return success when their qualification expectations are met. Mut
 - [APB checking and functional coverage](docs/15_APB_RESULTS_AND_CLOSURE.md)
 - [Replay and mutations](docs/16_REPLAY_AND_MUTATIONS.md)
 - [Implementation milestones](docs/06_IMPLEMENTATION_PLAN.md)
+- [Prioritized extension TODO backlog](docs/20_EXTENSION_BACKLOG.md)
 - [Support and validation](docs/07_VALIDATION.md)
 - [Contributing](CONTRIBUTING.md)
 
