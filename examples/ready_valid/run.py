@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 from verification_evidence.model import Compatibility, Manifest, Artifact, catalog_digest, load
 from verification_evidence.core import validate, summarize
 from model import plan
+from verification_evidence import simulation
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
@@ -29,12 +30,9 @@ def run_one(directory, mode, corrupt):
     sources = {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                for p in list(HERE.glob("*.py")) + list((HERE / "rtl").glob("*.sv")) + list((ROOT / "src/verification_evidence").glob("*.py"))}
     checker = digest(sources)
-    config = {"mode": mode, "corrupt": corrupt, "width": 8, "seed": 42}
+    config = {"mode": mode, "corrupt": corrupt, "width": 8, "seed": 42, "simulator": simulation.simulator(), "build_flags": simulation.build_flags(), "test_flags": json.loads(os.environ.get("PVC_TEST_ARGS", "[]"))}
     dependencies = {d.metadata["Name"]: d.version for d in metadata.distributions()}
-    tools = {"python": platform.python_version(), "cocotb": metadata.version("cocotb")}
-    for name in ("iverilog", "vvp"):
-        r = subprocess.run([name, "-V"], capture_output=True, text=True, check=True)
-        tools[name] = (r.stdout + r.stderr).splitlines()[0]
+    tools = simulation.identity()
     inputs = dict(sources=sources, configuration=config, dependencies=dependencies, tools=tools)
     (out / "inputs.json").write_text(json.dumps(inputs, indent=2))
     command = [sys.executable, str(Path(__file__).resolve()), "--worker", "--mode", mode,
@@ -72,16 +70,14 @@ def main():
     parser.add_argument("--mode", choices=["uvm", "plain"])
     parser.add_argument("--corrupt", type=int, choices=[0, 1], default=0)
     parser.add_argument("--out")
+    simulation.configure(parser)
     args = parser.parse_args()
+    simulation.select(args)
     if args.worker:
-        from cocotb.runner import get_runner
         out = Path(args.out)
-        os.environ["VIRTUAL_ENV"] = sys.prefix
-        runner = get_runner("icarus")
-        runner.build(verilog_sources=[HERE / "rtl/stream_top.sv"], hdl_toplevel="stream_top",
-            parameters={"CORRUPT": args.corrupt}, build_args=["-g2012"], build_dir=out / "build", always=True)
-        runner.test(hdl_toplevel="stream_top", test_module="test_" + args.mode, test_dir=HERE,
-            results_xml=str(out / "results.xml"), extra_env={"STREAM_OUT": str(out)})
+        simulation.run(sources=[HERE / "rtl/stream_top.sv"], top="stream_top",
+            parameters={"CORRUPT": args.corrupt}, out=out, module="test_" + args.mode,
+            test_dir=HERE, extra_env={"STREAM_OUT": str(out)})
         return 0
     out = ROOT / "evidence/ready-valid" / str(uuid.uuid4())
     out.mkdir(parents=True)

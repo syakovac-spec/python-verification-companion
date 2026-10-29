@@ -21,6 +21,7 @@ When adapting to a new DUT/interface, read docs/17_EXTENDING_TO_OTHER_INTERFACES
 - Preserve X/Z values until a checker applies an explicit policy. Never silently coerce unknown hardware values to zero.
 - Keep scoreboards independent of stimulus intent. Derive actual transactions from sampled interface behavior and expected results from the documented DUT contract.
 - Use simulator scheduling correctly. Document driving and sampling phases; validate reset and same-edge behavior with executable checks.
+- Preserve simulator portability: select the backend through the shared simulation adapter and honor the active Python/conda environment. Never infer pre-NBA values from a RisingEdge callback. Use qualified HDL acceptance snapshots or an equivalent protocol-specific adapter. See docs/19_SIMULATOR_PORTABILITY.md.
 - Record failed, aborted, incomplete and incompatible runs explicitly. Never turn missing evidence into a pass.
 - Do not weaken checkers, goals, exclusions or requirements merely to make a test pass. Changes to verification intent must be clearly identified for user review.
 - Keep HDL structural coverage, functional coverage, requirements evidence, assertion results and Python coverage separate.

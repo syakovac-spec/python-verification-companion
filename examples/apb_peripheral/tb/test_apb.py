@@ -53,11 +53,11 @@ class Monitor(pyuvm.uvm_monitor):
     async def sample_loop(self):
         while True:
             await RisingEdge(self.dut.PCLK)
-            before = snapshot(self.dut, captured=False)
-            scratch_before = str(self.dut.dut.scratch.value).lower()
             await ReadOnly()
+            # RisingEdge is a notification, not a portable pre-NBA sampling
+            # region. HDL captures acceptance/state before sequential updates.
             frame = snapshot(self.dut)
-            assert frame == before, "SAMPLING_SHIM_MISMATCH"
+            scratch_before = str(self.dut.s_scratch.value).lower()
             after = snapshot(self.dut, captured=False)
             self.log.write(json.dumps({"kind": "sample", "tick": tick(), "signals": frame,
                                        "post_nba_rdata": after["rdata"]}) + "\n")

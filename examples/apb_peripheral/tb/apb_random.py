@@ -1,7 +1,29 @@
 """PyVSC constraint backend with reproducible, independent object streams."""
 import hashlib
 import random
+import time
+from functools import wraps
 import vsc
+
+
+def profiled_solve(method):
+    @wraps(method)
+    def call(self, *args, **kwargs):
+        start = time.perf_counter_ns()
+        failed = False
+        try:
+            return method(self, *args, **kwargs)
+        except Exception:
+            failed = True
+            raise
+        finally:
+            row = self.solve_profile.setdefault(method.__name__, {"calls": 0, "failures": 0, "total_ns": 0, "max_ns": 0})
+            elapsed = time.perf_counter_ns() - start
+            row["calls"] += 1
+            row["failures"] += int(failed)
+            row["total_ns"] += elapsed
+            row["max_ns"] = max(row["max_ns"], elapsed)
+    return call
 
 
 def seed_for(root, path):
@@ -39,6 +61,8 @@ class ResetRequest:
 
 class Streams:
     def __init__(self, root, wait, path="env.random"):
+        self.solve_profile = {}
+        self.solver = vsc.get_solver_backend() if hasattr(vsc, "get_solver_backend") else "boolector"
         self.seeds = {key: seed_for(root, path + "." + key) for key in ("transactions", "resets", "idle")}
         self.tx = Request()
         self.tx.set_randstate(vsc.RandState.mkFromSeed(self.seeds["transactions"]))
@@ -46,6 +70,7 @@ class Streams:
         self.reset.set_randstate(vsc.RandState.mkFromSeed(self.seeds["resets"]))
         self.idle = random.Random(self.seeds["idle"])
 
+    @profiled_solve
     def draw(self, address=None, write=None, high=None, low=None):
         tx = self.tx
         with tx.randomize_with():
@@ -59,6 +84,7 @@ class Streams:
                 (tx.data & 3) == low
         return dict(address=int(tx.address), write=bool(tx.write), data=int(tx.data))
 
+    @profiled_solve
     def draw_reset(self, phase=None, write=None):
         item = self.reset
         with item.randomize_with():

@@ -24,11 +24,12 @@ module apb_top #(parameter integer WAIT_CYCLES = 0, MUTANT = 0);
     end
     // Passive snapshot of acceptance values, before sequential NBA updates.
     reg s_reset, s_sel, s_enable, s_write, s_ready, s_error;
-    reg [31:0] s_addr, s_wdata, s_rdata;
+    reg [31:0] s_addr, s_wdata, s_rdata, s_scratch;
     always @(posedge PCLK) begin
         s_reset <= PRESETn; s_sel <= PSEL; s_enable <= PENABLE;
         s_write <= PWRITE; s_ready <= PREADY; s_error <= PSLVERR;
         s_addr <= PADDR; s_wdata <= PWDATA; s_rdata <= PRDATA;
+        s_scratch <= dut.scratch;
     end
     reg [2047:0] wavefile;
     initial begin

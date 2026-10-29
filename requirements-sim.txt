@@ -1,4 +1,6 @@
-cocotb==1.9.2
-pyuvm==5.0.0
-pyvsc==0.9.6.37412289187
-pyboolector==3.2.4.38488416565
+# Use the active Python/conda environment. Exact tested versions are recorded
+# in evidence summaries; the historical snapshot is available separately.
+cocotb>=1.9
+pyuvm>=4
+pyvsc>=0.9.6
+# PyVSC selects its solver dependencies; do not force a particular solver wheel.

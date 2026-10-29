@@ -10,6 +10,8 @@ Read [Extending to other buses and interfaces](docs/17_EXTENDING_TO_OTHER_INTERF
 
 ## Install
 
+Use your existing Python or conda environment. The runners use its interpreter and do not activate another environment. Select your simulator with `--sim vcs`, `--sim verilator`, `--sim questa`, or `SIM`; Icarus is the default only. See [simulator portability, conda and solver profiling](docs/19_SIMULATOR_PORTABILITY.md) for the tested matrix, VCS setup and the race-free sampling contract.
+
 Download this repository as a ZIP and extract it, or clone it:
 
 ```sh
@@ -60,7 +62,7 @@ python3 -m venv .venv-linux
 .venv-linux/bin/python examples/ready_valid/run.py
 ```
 
-The direct simulation dependencies are pinned. The recorded development environment's full version snapshot is `evidence/m0/environment-freeze.txt`; use it instead of `requirements-sim.txt` when reproducing that dependency set. It includes optional investigation tools and is not a hash-locked manifest. Source packaging and a fresh core installation are checked separately from full fresh-machine simulation qualification.
+Simulation dependencies use permissive minimum versions rather than exact pins. Keep your compatible installed versions, or install `requirements-sim.txt`. The historical exact set is available in `requirements-sim-qualified-20261028.txt`; the older full development snapshot is `evidence/m0/environment-freeze.txt`. Recorded versions support reproduction rather than restricting installation. Run `python scripts/qualify_compatibility.py --sim YOUR_SIMULATOR` in your environment; add `--full` for mutation/replay qualification. Commercial simulators require your installation and license.
 
 ## What runs
 
@@ -81,6 +83,7 @@ Suite commands return success when their qualification expectations are met. Mut
 - [Evidence core and CLI](docs/14_EVIDENCE_CORE.md)
 - [Extend to another bus or interface](docs/17_EXTENDING_TO_OTHER_INTERFACES.md)
 - [Python 3.11 / Icarus 13 qualification](docs/18_TOOLCHAIN_QUALIFICATION.md)
+- [Simulator portability, conda, sampling races and solver profiles](docs/19_SIMULATOR_PORTABILITY.md)
 - [APB checking and functional coverage](docs/15_APB_RESULTS_AND_CLOSURE.md)
 - [Replay and mutations](docs/16_REPLAY_AND_MUTATIONS.md)
 - [Implementation milestones](docs/06_IMPLEMENTATION_PLAN.md)

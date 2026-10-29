@@ -1,0 +1,1610 @@
+{
+  "date": "2026-10-29",
+  "scope": "Executed local compatibility tests; VCS unavailable locally.",
+  "environments": {
+    "icarus13-cocotb21-final": {
+      "python": "3.11.18",
+      "conda": false,
+      "dependencies": {
+        "cocotb": "2.1.0",
+        "dv-solve": "0.2.5",
+        "PyBoolector": "3.2.4.38488416565",
+        "pyuvm": "5.0.0",
+        "pyvsc": "1.0.0"
+      },
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "full": true,
+      "qualified": true,
+      "commands": [
+        {
+          "command": [
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-q"
+          ],
+          "returncode": 0,
+          "seconds": 9.038629816030152
+        },
+        {
+          "command": [
+            "examples/ready_valid/run.py"
+          ],
+          "returncode": 0,
+          "seconds": 64.53932738304138
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py"
+          ],
+          "returncode": 0,
+          "seconds": 151.36236040201038
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--m3"
+          ],
+          "returncode": 0,
+          "seconds": 160.73870906303637
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--m4"
+          ],
+          "returncode": 0,
+          "seconds": 426.0640558640007
+        }
+      ],
+      "cases": [
+        {
+          "mode": "uvm",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "uvm",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mode": "plain",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "plain",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mutant": 0,
+          "case": "baseline",
+          "seed": 42,
+          "wait_cycles": 0,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 48,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "baseline",
+          "seed": 42,
+          "wait_cycles": 1,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 50,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "baseline",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 50,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "wrong_response",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-001.id",
+            "APB-001.startup.id"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "missing_response",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-006.read",
+            "APB-010.drained"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "unstable_control",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-009.clean"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 2,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "truncated",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-010.drained"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "interrupted",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-010.drained"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 0,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 70,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 1,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 72,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 72,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 17,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 71,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3-gap",
+          "seed": 42,
+          "wait_cycles": 0,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "incomplete",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 50,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 72,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 72,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 1,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-002.alt_a",
+            "APB-002.ones",
+            "APB-002.readback",
+            "APB-002.walk_31",
+            "APB-005.preserve_scratch",
+            "APB-007.wr.different",
+            "APB-007.wr.same",
+            "FC-001.read.scratch",
+            "FC-002.wait_3.read",
+            "FC-003.wr",
+            "FC-005.h1.l0",
+            "FC-005.h1.l3"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 61,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 1,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-002.alt_a",
+            "APB-002.ones",
+            "APB-002.readback",
+            "APB-002.walk_31",
+            "APB-005.preserve_scratch",
+            "APB-007.wr.different",
+            "APB-007.wr.same",
+            "FC-001.read.scratch",
+            "FC-002.wait_3.read",
+            "FC-003.wr",
+            "FC-005.h1.l0",
+            "FC-005.h1.l3"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 61,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 2,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-006.write"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 63,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 2,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-006.write"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 63,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 3,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-004.readback",
+            "APB-004.reserved",
+            "APB-004.zero_preserve",
+            "APB-007.wr.different",
+            "APB-007.wr.same"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 62,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 3,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-004.readback",
+            "APB-004.reserved",
+            "APB-004.zero_preserve",
+            "APB-007.wr.different",
+            "APB-007.wr.same"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 62,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 4,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-005.unmapped.read",
+            "APB-005.unmapped.write",
+            "APB-007.rr.different",
+            "APB-007.rw.different",
+            "APB-007.rw.same",
+            "APB-007.wr.different",
+            "FC-001.write.unmapped",
+            "FC-002.wait_3.write",
+            "FC-003.rw"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 61,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 4,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-005.unmapped.read",
+            "APB-005.unmapped.write",
+            "APB-007.rr.different",
+            "APB-007.rw.different",
+            "APB-007.rw.same",
+            "APB-007.wr.different",
+            "FC-001.write.unmapped",
+            "FC-002.wait_3.write",
+            "FC-003.rw"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 61,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 5,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-001.after_write.scratch",
+            "APB-002.readback",
+            "APB-005.preserve_scratch",
+            "APB-007.rr.different",
+            "APB-007.rr.same",
+            "APB-007.wr.different",
+            "APB-008.completion.write",
+            "APB-008.setup.write",
+            "APB-008.wait.write",
+            "FC-001.read.scratch",
+            "FC-002.wait_3.read",
+            "FC-003.rr",
+            "FC-003.wr",
+            "FC-004.completion.write",
+            "FC-004.setup.write",
+            "FC-004.wait.write",
+            "FC-005.h0.l0"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 68,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 5,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-001.after_write.scratch",
+            "APB-002.readback",
+            "APB-005.preserve_scratch",
+            "APB-007.rr.different",
+            "APB-007.rr.same",
+            "APB-007.wr.different",
+            "APB-008.completion.write",
+            "APB-008.setup.write",
+            "APB-008.wait.write",
+            "FC-001.read.scratch",
+            "FC-002.wait_3.read",
+            "FC-003.rr",
+            "FC-003.wr",
+            "FC-004.completion.write",
+            "FC-004.setup.write",
+            "FC-004.wait.write",
+            "FC-005.h0.l0"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 68,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 6,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-006.read",
+            "APB-006.write",
+            "FC-001.read.event",
+            "FC-001.read.id",
+            "FC-001.read.misaligned",
+            "FC-001.read.scratch",
+            "FC-001.read.status",
+            "FC-001.write.event",
+            "FC-001.write.id",
+            "FC-001.write.misaligned",
+            "FC-001.write.scratch",
+            "FC-001.write.status",
+            "FC-001.write.unmapped",
+            "FC-002.wait_3.read",
+            "FC-002.wait_3.write"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 63,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 6,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-006.read",
+            "APB-006.write",
+            "FC-001.read.event",
+            "FC-001.read.id",
+            "FC-001.read.misaligned",
+            "FC-001.read.scratch",
+            "FC-001.read.status",
+            "FC-001.write.event",
+            "FC-001.write.id",
+            "FC-001.write.misaligned",
+            "FC-001.write.scratch",
+            "FC-001.write.status",
+            "FC-001.write.unmapped",
+            "FC-002.wait_3.read",
+            "FC-002.wait_3.write"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 63,
+          "infrastructure_error": null,
+          "artifact_integrity": true,
+          "same_checker_results": true,
+          "same_samples": true,
+          "same_pin_trace": true
+        },
+        {
+          "mutant": 0,
+          "case": "interrupted",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-010.drained"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        }
+      ]
+    },
+    "verilator5052-cocotb21-final": {
+      "python": "3.11.18",
+      "conda": false,
+      "dependencies": {
+        "cocotb": "2.1.0",
+        "dv-solve": "0.2.5",
+        "PyBoolector": "3.2.4.38488416565",
+        "pyuvm": "5.0.0",
+        "pyvsc": "1.0.0"
+      },
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "full": false,
+      "qualified": true,
+      "commands": [
+        {
+          "command": [
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-q"
+          ],
+          "returncode": 0,
+          "seconds": 9.215741899912246
+        },
+        {
+          "command": [
+            "examples/ready_valid/run.py"
+          ],
+          "returncode": 0,
+          "seconds": 69.53724681097083
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "baseline",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 23.898465027916245
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "wrong_response",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 19.906427228008397
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "m3",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 35.97272875404451
+        }
+      ],
+      "cases": [
+        {
+          "mode": "uvm",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "uvm",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mode": "plain",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "plain",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mutant": 0,
+          "case": "baseline",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 49,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "wrong_response",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-001.id",
+            "APB-001.startup.id"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 0,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 71,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        }
+      ]
+    },
+    "conda312-cocotb20-final": {
+      "python": "3.12.16",
+      "conda": true,
+      "dependencies": {
+        "cocotb": "2.0.1",
+        "dv-solve": "0.2.5",
+        "PyBoolector": "3.2.4.38488416565",
+        "pyuvm": "4.0.1",
+        "pyvsc": "1.0.0"
+      },
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.12.16",
+        "cocotb": "2.0.1",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "full": false,
+      "qualified": true,
+      "commands": [
+        {
+          "command": [
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-q"
+          ],
+          "returncode": 0,
+          "seconds": 7.388030104921199
+        },
+        {
+          "command": [
+            "examples/ready_valid/run.py"
+          ],
+          "returncode": 0,
+          "seconds": 24.650434351991862
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "baseline",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 10.59551955293864
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "wrong_response",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 7.818541667074896
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "m3",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 20.083190404926427
+        }
+      ],
+      "cases": [
+        {
+          "mode": "uvm",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "uvm",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mode": "plain",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "plain",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mutant": 0,
+          "case": "baseline",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 50,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "wrong_response",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-001.id",
+            "APB-001.startup.id"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 72,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        }
+      ]
+    },
+    "icarus11-cocotb19-final": {
+      "python": "3.11.18",
+      "conda": false,
+      "dependencies": {
+        "cocotb": "1.9.2",
+        "PyBoolector": "3.2.4.38488416565",
+        "pyuvm": "5.0.0",
+        "pyvsc": "0.9.6.37412289187"
+      },
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "1.9.2",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "full": false,
+      "qualified": true,
+      "commands": [
+        {
+          "command": [
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests",
+            "-q"
+          ],
+          "returncode": 0,
+          "seconds": 9.727991911000572
+        },
+        {
+          "command": [
+            "examples/ready_valid/run.py"
+          ],
+          "returncode": 0,
+          "seconds": 38.74269492295571
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "baseline",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 15.009257249999791
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "wrong_response",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 11.906392132979818
+        },
+        {
+          "command": [
+            "examples/apb_peripheral/run_suite.py",
+            "--single",
+            "--case",
+            "m3",
+            "--wait",
+            "3"
+          ],
+          "returncode": 0,
+          "seconds": 37.093797320034355
+        }
+      ],
+      "cases": [
+        {
+          "mode": "uvm",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "uvm",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mode": "plain",
+          "corrupt": 0,
+          "qualified": true,
+          "gate": "pass",
+          "failed": []
+        },
+        {
+          "mode": "plain",
+          "corrupt": 1,
+          "qualified": true,
+          "gate": "failed",
+          "failed": [
+            "ORDER"
+          ]
+        },
+        {
+          "mutant": 0,
+          "case": "baseline",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 50,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "wrong_response",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "failed",
+          "failed_obligations": [
+            "APB-001.id",
+            "APB-001.startup.id"
+          ],
+          "xml_expected": true,
+          "pre_post_nba_changes": 1,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        },
+        {
+          "mutant": 0,
+          "case": "m3",
+          "seed": 42,
+          "wait_cycles": 3,
+          "qualified": true,
+          "process_returncode": 0,
+          "gate": "pass",
+          "failed_obligations": [],
+          "xml_expected": true,
+          "pre_post_nba_changes": 72,
+          "infrastructure_error": null,
+          "artifact_integrity": true
+        }
+      ]
+    }
+  },
+  "verilator_mutation_replay": [
+    {
+      "mutant": 0,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "pass",
+      "failed_obligations": [],
+      "xml_expected": true,
+      "pre_post_nba_changes": 71,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 0,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "pass",
+      "failed_obligations": [],
+      "xml_expected": true,
+      "pre_post_nba_changes": 71,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 1,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-002.alt_a",
+        "APB-002.ones",
+        "APB-002.readback",
+        "APB-002.walk_31",
+        "APB-005.preserve_scratch",
+        "APB-007.wr.different",
+        "APB-007.wr.same",
+        "FC-001.read.scratch",
+        "FC-002.wait_3.read",
+        "FC-003.wr",
+        "FC-005.h1.l0",
+        "FC-005.h1.l3"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 60,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 1,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-002.alt_a",
+        "APB-002.ones",
+        "APB-002.readback",
+        "APB-002.walk_31",
+        "APB-005.preserve_scratch",
+        "APB-007.wr.different",
+        "APB-007.wr.same",
+        "FC-001.read.scratch",
+        "FC-002.wait_3.read",
+        "FC-003.wr",
+        "FC-005.h1.l0",
+        "FC-005.h1.l3"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 60,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 2,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-006.write"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 62,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 2,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-006.write"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 62,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 3,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-004.readback",
+        "APB-004.reserved",
+        "APB-004.zero_preserve",
+        "APB-007.wr.different",
+        "APB-007.wr.same"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 61,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 3,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-004.readback",
+        "APB-004.reserved",
+        "APB-004.zero_preserve",
+        "APB-007.wr.different",
+        "APB-007.wr.same"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 61,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 4,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-005.unmapped.read",
+        "APB-005.unmapped.write",
+        "APB-007.rr.different",
+        "APB-007.rw.different",
+        "APB-007.rw.same",
+        "APB-007.wr.different",
+        "FC-001.write.unmapped",
+        "FC-002.wait_3.write",
+        "FC-003.rw"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 60,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 4,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-005.unmapped.read",
+        "APB-005.unmapped.write",
+        "APB-007.rr.different",
+        "APB-007.rw.different",
+        "APB-007.rw.same",
+        "APB-007.wr.different",
+        "FC-001.write.unmapped",
+        "FC-002.wait_3.write",
+        "FC-003.rw"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 60,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 5,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-001.after_write.scratch",
+        "APB-002.readback",
+        "APB-005.preserve_scratch",
+        "APB-007.rr.different",
+        "APB-007.rr.same",
+        "APB-007.wr.different",
+        "APB-008.completion.write",
+        "APB-008.setup.write",
+        "APB-008.wait.write",
+        "FC-001.read.scratch",
+        "FC-002.wait_3.read",
+        "FC-003.rr",
+        "FC-003.wr",
+        "FC-004.completion.write",
+        "FC-004.setup.write",
+        "FC-004.wait.write",
+        "FC-005.h0.l0"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 67,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 5,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-001.after_write.scratch",
+        "APB-002.readback",
+        "APB-005.preserve_scratch",
+        "APB-007.rr.different",
+        "APB-007.rr.same",
+        "APB-007.wr.different",
+        "APB-008.completion.write",
+        "APB-008.setup.write",
+        "APB-008.wait.write",
+        "FC-001.read.scratch",
+        "FC-002.wait_3.read",
+        "FC-003.rr",
+        "FC-003.wr",
+        "FC-004.completion.write",
+        "FC-004.setup.write",
+        "FC-004.wait.write",
+        "FC-005.h0.l0"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 67,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 6,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-006.read",
+        "APB-006.write",
+        "FC-001.read.event",
+        "FC-001.read.id",
+        "FC-001.read.misaligned",
+        "FC-001.read.scratch",
+        "FC-001.read.status",
+        "FC-001.write.event",
+        "FC-001.write.id",
+        "FC-001.write.misaligned",
+        "FC-001.write.scratch",
+        "FC-001.write.status",
+        "FC-001.write.unmapped",
+        "FC-002.wait_3.read",
+        "FC-002.wait_3.write"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 62,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    },
+    {
+      "mutant": 6,
+      "case": "m3",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-006.read",
+        "APB-006.write",
+        "FC-001.read.event",
+        "FC-001.read.id",
+        "FC-001.read.misaligned",
+        "FC-001.read.scratch",
+        "FC-001.read.status",
+        "FC-001.write.event",
+        "FC-001.write.id",
+        "FC-001.write.misaligned",
+        "FC-001.write.scratch",
+        "FC-001.write.status",
+        "FC-001.write.unmapped",
+        "FC-002.wait_3.read",
+        "FC-002.wait_3.write"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 62,
+      "infrastructure_error": null,
+      "artifact_integrity": true,
+      "same_checker_results": true,
+      "same_samples": true,
+      "same_pin_trace": true
+    },
+    {
+      "mutant": 0,
+      "case": "interrupted",
+      "seed": 42,
+      "wait_cycles": 3,
+      "qualified": true,
+      "process_returncode": 0,
+      "gate": "failed",
+      "failed_obligations": [
+        "APB-010.drained"
+      ],
+      "xml_expected": true,
+      "pre_post_nba_changes": 0,
+      "infrastructure_error": null,
+      "artifact_integrity": true
+    }
+  ],
+  "vcs": {
+    "status": "unavailable",
+    "reason": "vcs executable absent; no licensed simulation was run",
+    "validation": "command construction and late-callback regression tests only"
+  },
+  "solver_profiles": {
+    "boolector": {
+      "python": "3.11.18",
+      "dependencies": {
+        "pyvsc": "1.0.0",
+        "pyboolector": "3.2.4.38488416565",
+        "dv-solve": "0.2.5"
+      },
+      "seed": 42,
+      "solver": "boolector",
+      "cprofile_enabled": false,
+      "import_seconds": 5.502437261980958,
+      "construction_seconds": 0.0005895999493077397,
+      "cases": {
+        "weighted_address": {
+          "draws": 200,
+          "total_ms": 471.8275059999998,
+          "first_ms": 103.080801,
+          "median_ms": 1.9262000000000001,
+          "p95_ms": 2.0432,
+          "maximum_ms": 103.080801,
+          "legality_passed": true
+        },
+        "targeted_bit_constraints": {
+          "draws": 200,
+          "total_ms": 600.1167059999999,
+          "first_ms": 2.7399,
+          "median_ms": 2.8575999999999997,
+          "p95_ms": 3.5932,
+          "maximum_ms": 3.8784,
+          "legality_passed": true
+        },
+        "reset_constraints": {
+          "draws": 200,
+          "total_ms": 165.78510200000005,
+          "first_ms": 0.8795,
+          "median_ms": 0.82575,
+          "p95_ms": 0.9044,
+          "maximum_ms": 0.9841,
+          "legality_passed": true
+        }
+      },
+      "unsatisfiable": {
+        "rejected": true,
+        "exception": "SolveFailure",
+        "seconds": 0.001365399919450283
+      },
+      "scope": "PyVSC randomize calls including constraint construction and native solver; not simulator time"
+    },
+    "dv-solve": {
+      "python": "3.11.18",
+      "dependencies": {
+        "pyvsc": "1.0.0",
+        "pyboolector": "3.2.4.38488416565",
+        "dv-solve": "0.2.5"
+      },
+      "seed": 42,
+      "solver": "dv-solve",
+      "cprofile_enabled": false,
+      "import_seconds": 5.270905885961838,
+      "construction_seconds": 0.0006018000422045588,
+      "cases": {
+        "weighted_address": {
+          "draws": 200,
+          "total_ms": 282.17100499999987,
+          "first_ms": 146.254503,
+          "median_ms": 0.6843,
+          "p95_ms": 0.8452,
+          "maximum_ms": 146.254503,
+          "legality_passed": true
+        },
+        "targeted_bit_constraints": {
+          "draws": 200,
+          "total_ms": 202.67590300000003,
+          "first_ms": 1.2937,
+          "median_ms": 0.9694499999999999,
+          "p95_ms": 1.2937,
+          "maximum_ms": 1.6782,
+          "legality_passed": true
+        },
+        "reset_constraints": {
+          "draws": 200,
+          "total_ms": 53.615501,
+          "first_ms": 0.2985,
+          "median_ms": 0.25465,
+          "p95_ms": 0.3361,
+          "maximum_ms": 0.4401,
+          "legality_passed": true
+        }
+      },
+      "unsatisfiable": {
+        "rejected": true,
+        "exception": "SolveFailure",
+        "seconds": 0.012160800048150122
+      },
+      "scope": "PyVSC randomize calls including constraint construction and native solver; not simulator time"
+    }
+  },
+  "solver_profile_caveat": "Single-machine microbenchmarks of these constraints, not general solver rankings or VCS speed comparisons."
+}

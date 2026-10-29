@@ -19,6 +19,7 @@ sys.path.insert(0, str(HERE / "tb"))
 from apb_evidence import catalog, sha
 from verification_evidence.model import Compatibility, Manifest, Artifact, Bundle, Run, Finalization, catalog_digest, dump, load
 from verification_evidence.core import validate, summarize
+from verification_evidence import simulation
 
 
 def digest(data):
@@ -30,19 +31,15 @@ def prepare(out, wait, case, command, seed=42, mutant=0, replay=None):
     sources += sorted((ROOT / "src" / "verification_evidence").glob("*.py"))
     source_hashes = {p.relative_to(ROOT).as_posix(): sha(p) for p in sources}
     dependencies = {d.metadata["Name"]: d.version for d in md.distributions()}
-    tools = {"python": platform.python_version(), "platform": platform.platform()}
-    for name in ("iverilog", "vvp"):
-        tool = shutil.which(name)
-        if tool is None:
-            raise RuntimeError(f"required simulator executable unavailable: {name}")
-        process = subprocess.run([tool, "-V"], capture_output=True, text=True, timeout=15)
-        tools[name] = (process.stdout + process.stderr).splitlines()[0]
-        tools[name + "_sha256"] = sha(tool)
+    tools = simulation.identity()
+    tools["platform"] = platform.platform()
     for name in ("cocotb", "pyuvm"):
         tools[name] = md.version(name)
     functional = case.startswith("m3")
     config = {"wait_cycles": wait, "case": case, "mutant": mutant, "timescale": "1ns/1ps", "top": "apb_top",
-              "build_flags": ["-g2012"], "clock_period_ns": 10, "random_generation": functional,
+              "simulator": simulation.simulator(), "build_flags": simulation.build_flags(), "test_flags": json.loads(os.environ.get("PVC_TEST_ARGS", "[]")), "clock_period_ns": 10, "random_generation": functional,
+              "solver_selection": os.environ.get("VSC_SOLVER", "library-default"),
+              "solver_fallback": os.environ.get("VSC_DVSOLVE_FALLBACK", "library-default"),
               "native_assertions_required": False, "checker": "Python observed-bus model"}
     inputs = dict(sources=source_hashes, dependencies=dependencies, configuration=config, tools=tools)
     (out / "inputs.json").write_text(json.dumps(inputs, indent=2) + "\n")
@@ -62,16 +59,14 @@ def prepare(out, wait, case, command, seed=42, mutant=0, replay=None):
 
 
 def worker(args):
-    from cocotb.runner import get_runner
     out = Path(args.out).resolve()
-    os.environ["VIRTUAL_ENV"] = sys.prefix
-    runner = get_runner("icarus")
-    runner.build(verilog_sources=[HERE / "rtl" / "apb_peripheral.sv", HERE / "rtl" / "apb_top.sv"],
-                 hdl_toplevel="apb_top", parameters={"WAIT_CYCLES": args.wait, "MUTANT": args.mutant}, build_args=["-g2012"],
-                 build_dir=out / "build", always=True)
-    runner.test(hdl_toplevel="apb_top", test_module="test_apb", test_dir=HERE / "tb", seed=args.seed,
-                results_xml=str(out / "results.xml"), plusargs=["+wavefile=" + str(out / "waves.vcd")],
-                extra_env={"APB_OUT": str(out), "APB_WAIT": str(args.wait), "APB_CASE": args.case, "APB_SEED": str(args.seed), "APB_REPLAY": str(Path(args.replay).resolve() / "pins.json") if args.replay else ""})
+    simulation.run(sources=[HERE / "rtl" / "apb_peripheral.sv", HERE / "rtl" / "apb_top.sv"],
+        top="apb_top", parameters={"WAIT_CYCLES": args.wait, "MUTANT": args.mutant}, out=out,
+        module="test_apb", test_dir=HERE / "tb", seed=args.seed,
+        plusargs=["+wavefile=" + str(out / "waves.vcd")],
+        extra_env={"APB_OUT": str(out), "APB_WAIT": str(args.wait), "APB_CASE": args.case,
+            "APB_SEED": str(args.seed), "APB_REPLAY": str(Path(args.replay).resolve() / "pins.json") if args.replay else ""})
+
 
 
 EXPECTED = {"wrong_response": {"APB-001.id", "APB-001.startup.id"},
@@ -108,7 +103,7 @@ def run_one(directory, wait, case, seed=42, mutant=0, replay=None):
 
     else:
         bundle = load(out / "bundle.json")
-    for name in ("stdout.log", "stderr.log", "results.xml", "waves.vcd", "manifest.json"):
+    for name in ("stdout.log", "stderr.log", "results.xml", "waves.vcd", "manifest.json", "solver-profile.json", "timing.json"):
         if (out / name).exists():
             bundle.runs[0].manifest.artifacts.append(Artifact(name, sha(out / name)))
     validate(bundle)
@@ -177,7 +172,9 @@ def main():
     p.add_argument("--m3", action="store_true", help="Constrained closure suite and deliberate coverage gap")
     p.add_argument("--out")
     p.add_argument("--single", action="store_true", help="Run one selected case for debugging")
+    simulation.configure(p)
     args = p.parse_args()
+    simulation.select(args)
     if args.replay and not args.worker and (not args.single or args.m4 or args.m3):
         p.error("--replay requires --single and cannot be combined with suite flags")
     if args.worker:

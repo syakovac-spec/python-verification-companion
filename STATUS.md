@@ -1,5 +1,17 @@
 # Publication candidate status
 
+## Portability and VCS sampling race — 2026-10-29
+
+Fixed the VCS-reported RisingEdge race: monitors read HDL acceptance snapshots after ReadOnly, the streaming driver uses captured valid/ready/reset, and APB captures pre-update SCRATCH state for early-side-effect checks. Missing stream capture handles are rejected. Three scheduler counterexamples exercise post-update live pins and missing capture. The full 65-test unit suite passes on Windows Python 3.10 and Linux Python 3.11/3.12, including a fresh core-only installation without optional simulator/solver packages.
+
+Both example runners now honor --sim/SIM and the active interpreter, including a conda-format environment created with micromamba. Removed forced VIRTUAL_ENV and unconditional Icarus probes/flags. VCS uses cocotb's supported Makefile integration, including on cocotb 1.9. Exact simulation pins are optional historical snapshots; default requirements use minimum versions. Other simulators require an appropriate installed cocotb backend and DUT-language support.
+
+Executed 68 simulator qualifications across four combinations: Icarus 13 + Python 3.11.18/cocotb 2.1.0/pyuvm 5/PyVSC 1.0 (full 32 cases); Icarus 11 + Python 3.11.18/cocotb 1.9.2/pyuvm 5/PyVSC 0.9.6 (7 cases); conda Python 3.12.16 + Icarus 11/cocotb 2.0.1/pyuvm 4.0.1/PyVSC 1.0 (7 cases); Verilator 5.052 + Python 3.11.18/cocotb 2.1.0/pyuvm 5/PyVSC 1.0 (7 cases plus 15 mutation/replay cases). All met qualification expectations. Both full mutation suites detected all six defects and reproduced all seven replay traces/check records exactly. Negative runs retain failed gates; the coverage gap remains incomplete.
+
+VCS is unavailable locally. Its command construction and the reported race counterexamples are tested; a licensed VCS execution remains to be run in the user's environment. This is not a universal simulator qualification or a VCS performance claim.
+
+Added scripts/qualify_compatibility.py and scripts/profile_constraints.py, per-run solver call profiles and build/test timing. Profiled Boolector and dv-solve on 200 draws each of weighted-address, targeted-bit and reset constraints, with legality checks and an expected unsatisfiable rejection. Publish exact results in evidence/portability-summary.json. Reproduce with docs/19_SIMULATOR_PORTABILITY.md. Potential Icarus engine improvements remain separate, measured follow-up work; no compiler patch is required by the package.
+
 Prepared 2026-10-28. M0–M4 complete in the recorded development environment; see README and evidence/m4-summary.json. Raw historical evidence is retained locally, not included in this source release.
 
 The owner selected MIT and personal GitHub hosting on 2026-10-28. Public repository: https://github.com/syakovac-spec/python-verification-companion.

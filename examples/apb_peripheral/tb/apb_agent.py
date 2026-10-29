@@ -104,4 +104,9 @@ class RandomAgent(pyuvm.uvm_agent):
 
     async def exercise(self, model, driver, root, wait, directory, gap=False):
         sequence = ClosureSequence(model, driver, root, wait, directory, gap)
-        await sequence.start(self.sequencer)
+        try:
+            await sequence.start(self.sequencer)
+        finally:
+            (directory / "solver-profile.json").write_text(json.dumps({
+                "solver": sequence.streams.solver, "calls": sequence.streams.solve_profile,
+                "scope": "randomize call wall time including constraint construction"}, indent=2) + "\n")

@@ -13,7 +13,7 @@ class StreamConfig:
     ready: object
     data: object
     channel: str
-    capture: object = None  # optional test-only HDL snapshot oracle
+    capture: object = None  # required HDL acceptance snapshot; see sampling contract
 
     @classmethod
     def bind(cls, dut, prefix, channel):
@@ -21,15 +21,24 @@ class StreamConfig:
                    getattr(dut, prefix + "_ready"), getattr(dut, prefix + "_data"), channel, dut)
 
 
+def captured_signals(config):
+    """Read the HDL's edge snapshot after ReadOnly, never the live bus.
+
+    An adapter must supply equivalent sampling registers/clocking semantics.
+    Falling back to live handles would reintroduce simulator-dependent races.
+    """
+    if config.capture is None:
+        raise ValueError("StreamConfig.capture must provide HDL edge snapshots (s_reset, s_<channel>_{valid,ready,data})")
+    return {name: str(getattr(config.capture,
+            "s_reset" if name == "reset" else f"s_{config.channel}_{name}").value).lower()
+            for name in ("reset", "valid", "ready", "data")}
+
+
 async def observe(config, publish):
     while True:
         await RisingEdge(config.clock)
-        signals = {name: str(getattr(config, name).value).lower() for name in ("reset", "valid", "ready", "data")}
         await ReadOnly()
-        if config.capture is not None:
-            for name in signals:
-                handle = "s_reset" if name == "reset" else f"s_{config.channel}_{name}"
-                assert signals[name] == str(getattr(config.capture, handle).value).lower(), "pre-NBA sampling mismatch"
+        signals = captured_signals(config)
         publish((config.channel, int(get_sim_time(units="ps")), signals))
 
 
@@ -41,8 +50,9 @@ async def send(config, value):
     config.data.value = value
     for _ in range(100):
         await RisingEdge(config.clock)
-        accepted = str(config.ready.value) == "1" and str(config.reset.value) == "1"
         await ReadOnly()
+        signals = captured_signals(config)
+        accepted = all(signals[name] == "1" for name in ("reset", "valid", "ready"))
         if accepted:
             await FallingEdge(config.clock)
             config.valid.value = 0

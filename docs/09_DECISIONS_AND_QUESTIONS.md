@@ -33,6 +33,12 @@ Public project name and hosting account; licensing/ownership; desired commercial
 
 ## Decision entry template
 
+## Portability and sampling decisions — 2026-10-29
+
+- **ADR-028:** keep simulator selection in the optional simulation adapter, with backend-specific flags and actual tool fingerprints. Accept user-selected cocotb/Python/conda environments; exact pins become optional reproduction snapshots. VCS uses cocotb's Makefile backend so cocotb 1.9 remains usable. No commercial-simulator execution is claimed without a tool and license.
+- **ADR-029:** RisingEdge is a notification, not a portable pre-NBA observation point. VCS exposed the prior assumption. Use HDL acceptance snapshots after ReadOnly in monitors and driver handshake decisions; capture architectural pre-state for the early-side-effect checker. Reject missing streaming capture handles. Counterexamples explicitly resume Python after live pins have changed; actual simulator positive/negative and replay regressions complement them.
+- **ADR-030:** profile complete randomize calls on the real APB constraints and report solver identity, latency distribution, setup cost and unsatisfiable rejection. Preserve solver selection/fallback configuration in replay identity. Allow multiple solvers without asserting seed equivalence or universal performance rankings. Keep potential Icarus engine upgrades separate from the simulator-independent package.
+
 ## Extension decisions — 2026-10-28
 
 - **ADR-025, implemented:** add a narrow public EvidenceRecorder for protocol-independent bookkeeping. Monitors and contract scoreboards retain ownership of observation, prediction, correlation and pending state. Preserve the existing schema and conservative closure rules; use standard pyuvm composition rather than another UVM framework.

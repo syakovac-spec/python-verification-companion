@@ -1,0 +1,5 @@
+# Historical tested snapshot; optional, not required for installation.
+cocotb==1.9.2
+pyuvm==5.0.0
+pyvsc==0.9.6.37412289187
+pyboolector==3.2.4.38488416565
