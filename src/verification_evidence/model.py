@@ -192,13 +192,18 @@ def decode(cls, value, path="bundle"):
 
 def normalized(value):
     if is_dataclass(value):
-        value = asdict(value)
+        # Traverse fields directly: asdict first deep-copies the entire evidence
+        # tree, only for this function to traverse and allocate it again.
+        from dataclasses import fields
+        return {f.name: normalized(getattr(value, f.name)) for f in sorted(fields(value), key=lambda f: f.name)}
     if isinstance(value, dict):
         return {k: normalized(v) for k, v in sorted(value.items())}
     if isinstance(value, list):
         result = [normalized(v) for v in value]
         # Entity collections are unordered. Commands and payload arrays are ordered.
         return result
+    if isinstance(value, tuple):
+        return tuple(normalized(v) for v in value)
     return value
 
 

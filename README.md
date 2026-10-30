@@ -98,3 +98,7 @@ No AI API key or service is required at runtime. Adapting to another DUT require
 ## License
 
 MIT; see [LICENSE](LICENSE). Dependencies retain their own licenses. Pending license decisions in historical design notes were resolved for this source release on 2026-10-28.
+
+## Performance benchmarks
+
+See [checked performance benchmarks](docs/22_PERFORMANCE_BENCHMARKS.md) for repeated small/larger RTL workloads, solver profiling, evidence-cost measurement and conservative regression gates. These measurements preserve checks and coverage; they are not a VCS performance promise.

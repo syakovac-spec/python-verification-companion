@@ -72,3 +72,7 @@ ID and date; question; options considered; decision; evidence/experiment; affect
 ## Agent kit decision — 2026-10-29
 
 - **ADR-031:** EXT-01 uses strict versioned standard-library JSON and packaged source templates. The initial executable protocol contract is ordered ready/valid, one packed data field, one clock and active-low reset with discard semantics. Reject unknown protocols rather than guessing behavior. Generate user-owned files without overwriting existing directories; retain standard pyuvm and plain-cocotb paths, independent observations, explicit predictor/protocol hooks and a separate coverage plan. Synthetic checker sensitivity tests are labeled separately from RTL evidence. Additional protocols/scoreboard policies/solver-driven closure remain their own backlog items.
+
+## Performance decision - 2026-10-30
+
+- **ADR-032:** Benchmark complete checked workloads with preserved stimulus and exact semantic hashes, alternating monitor variants and fresh builds. Use Linux simulator-process RSS and explicit wall-time scopes; never label scheduler/VPI residual as pure RTL time. Profile actual evidence before optimizing: direct dataclass normalization avoids redundant deep copies without removing validation or changing canonical JSON. Keep cached-handle sampling as a measured prototype, and retain VCS/customer RTL and detailed native attribution as unqualified follow-up. Provisional regression gates return incomplete for noisy or incompatible samples.

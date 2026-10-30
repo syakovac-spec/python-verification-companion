@@ -1,5 +1,15 @@
 # Publication candidate status
 
+## EXT-02 measured performance work - 2026-10-30
+
+Added scripts/benchmark_simulation.py, profile_evidence.py and compare_benchmarks.py. The Linux/WSL harness uses the active interpreter and shared simulator adapter, generates 1,000-transaction checked traffic, and compares one versus 1,024 observable RTL accumulator lanes. Baseline/cached-handle variants preserve identical observations, checks, coverage and finalization. Each sample retains source/tool/configuration identity, stimulus, simulator XML, evidence, stage timing and simulator-process peak RSS. See docs/22_PERFORMANCE_BENCHMARKS.md and evidence/performance-summary.json for commands and exact results.
+
+Profiling found redundant dataclass copying during canonicalization. Direct traversal preserves canonical evidence and summary hashes. On the same 1,000-transaction bundle (five unprofiled repeats), median validation improved from 1.546 to 1.123 seconds, summary from 2.209 to 1.770 seconds, and writing from 0.647 to 0.430 seconds. No check, coverage goal or unknown-value policy was removed. The full 71-test Windows Python 3.10 suite passes, including canonicalization equivalence and conservative benchmark-gate counterexamples.
+
+Available qualification: repeated Icarus 13 and Verilator 5.052 on Python 3.11.18/cocotb 2.1.0, both monitor variants, with separate corruption sensitivity cases. Solver profiles exercise Boolector and dv-solve (200 draws per constraint class plus unsatisfiable rejection). Timing variability is retained rather than hidden by averaging.
+
+EXT-02 remains partially qualified: licensed VCS and representative customer RTL are unavailable; pure native RTL/VPI attribution and compiler/process-tree RSS are not measured. Initial local regression thresholds are 25% median time and 15% RSS, requiring at least three samples and <=20% spread; noisy/incompatible comparisons remain incomplete. HDL batching is deferred pending a measured callback bottleneck. Build caching and parallel regression work remain EXT-03; M5 remains open.
+
 ## EXT-01 agent generator — 2026-10-29
 
 Implemented `vevidence create-agent --interface interfaces/packet16.json --output verification/packet16`. Versioned JSON validates signal bindings, width, clock/reset, source/sink roles and packed transaction field. Wheel-packaged templates produce configuration, standard pyuvm transaction/sequence/sequencer/driver/monitor/active-passive agent/subscriber, independent reference/scoreboard hooks, a separate coverage plan, environment, plain-cocotb path, sampling harness, runner and checker tests. Existing output is never overwritten. See docs/21_AGENT_GENERATOR.md for the real-DUT agent handoff and bounded scope.
@@ -37,3 +47,5 @@ Added the public protocol-independent EvidenceRecorder, a ready/valid source/sin
 Executed commands: `python scripts/qualify_m2_units.py python311-icarus13`; `python examples/apb_peripheral/run_suite.py` with default, `--m3` and `--m4`; `python examples/ready_valid/run.py`; `python -m pip check`. All 57 unit tests passed in the simulation environment and again after a fresh wheel installation into a core-only Python 3.11 environment with cocotb, pyuvm and vsc absent. See evidence/python311-icarus13-summary.json for sanitized results, dependencies and source digests; full raw artifacts remain local. Reproduction commands are in docs/18_TOOLCHAIN_QUALIFICATION.md.
 
 M5 is partially advanced, not declared complete. Schema migration policy, independent fresh-machine release qualification and broader release hardening remain. No external user DUT, complete AXI VIP, native Windows simulator/solver environment, or general new-protocol replay is qualified by these results.
+
+EXT-02 final validation: all 28 main simulation cases qualified (24 positive, four deliberate corruption). Both repeated positive reports contain a loop-time group above 20% spread, so performance-gate self-comparisons correctly return incomplete. A stable automatic performance baseline remains open. All 71 tests also pass on Linux Python 3.11.18.

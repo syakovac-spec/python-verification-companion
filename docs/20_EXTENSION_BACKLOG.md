@@ -37,16 +37,18 @@ Implemented 2026-10-29 for the bounded ready/valid template: see [generation and
 
 ## EXT-02 — Performance benchmarks and profiling
 
-- [ ] Add a long-running small DUT benchmark to expose Python callbacks, solver and evidence overhead.
-- [ ] Add a larger RTL workload to expose simulator execution cost and memory growth.
+- [x] Add a long-running small DUT benchmark to expose Python callbacks, solver and evidence overhead.
+- [x] Add a larger RTL workload to expose simulator execution cost and memory growth.
 - [ ] Add a representative real-design benchmark when a suitable design is available.
 - [ ] Separate compile/elaboration, startup, RTL execution, Python/VPI callbacks, constraint construction/solving, checking, evidence output and peak memory. Extend the existing timing and constraint-profile tools rather than duplicating them.
-- [ ] Record exact tools, flags, environment, generated stimulus, check/trace settings and warm/cold build conditions. Use repeated measurements and report variability.
+- [x] Record exact tools, flags, environment, generated stimulus, check/trace settings and warm/cold build conditions. Use repeated measurements and report variability.
 - [ ] Compare supported simulator/dependency/solver combinations on equivalent workloads. Obtain a licensed VCS baseline when available; keep unavailable tools explicitly unqualified.
 - [ ] Establish regression thresholds for runtime and memory after measuring stable baselines.
 - [ ] If callbacks dominate, prototype transaction batching and HDL or compiled driver/monitor implementations behind the same agent interface. Preserve scoreboards and coverage plans across execution implementations.
 
 Acceptance: publish reproducible breakdowns and demonstrate improvements without removing checks or changing coverage intent. The previously suggested goal of within 2x VCS steady-state runtime is provisional, requires an agreed workload and measured VCS baseline, and is not a performance promise. Report compile time, single-test runtime and regression throughput separately.
+
+Local implementation (2026-10-30): [benchmark harness and profiling guide](22_PERFORMANCE_BENCHMARKS.md). Repeated Icarus/Verilator runs compare handle lookup versus cached sampling, plus a measured core canonicalization optimization with identical evidence and summary hashes. Native RTL/VPI attribution and compiler/process-tree memory remain unmeasured; licensed VCS and customer RTL baselines remain unavailable. Conditional HDL batching is deferred because the larger workload is dominated by RTL/scheduler residual rather than monitor reads. Thresholds are provisional and reject noisy/incompatible comparisons. EXT-02 is not fully externally qualified.
 
 ## EXT-03 — Build caching and parallel regression execution
 
