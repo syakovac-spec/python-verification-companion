@@ -155,3 +155,7 @@ Consequently the performance regression gate returns **incomplete**, even when
 comparing a report with itself. Correctness qualification passed; a stable
 performance regression baseline has not yet been established. The descriptive
 medians above must not be treated as guaranteed speedups or relaxed thresholds.
+
+## Community commercial-simulator results
+
+Use the [public submission runner](23_PUBLIC_BENCHMARK_SUBMISSIONS.md) to execute positive and corruption workloads and export an allowlisted results ZIP. Failed startup and smoke submissions are useful compatibility reports, not passing performance baselines.

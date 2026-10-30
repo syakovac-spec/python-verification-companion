@@ -76,3 +76,7 @@ ID and date; question; options considered; decision; evidence/experiment; affect
 ## Performance decision - 2026-10-30
 
 - **ADR-032:** Benchmark complete checked workloads with preserved stimulus and exact semantic hashes, alternating monitor variants and fresh builds. Use Linux simulator-process RSS and explicit wall-time scopes; never label scheduler/VPI residual as pure RTL time. Profile actual evidence before optimizing: direct dataclass normalization avoids redundant deep copies without removing validation or changing canonical JSON. Keep cached-handle sampling as a measured prototype, and retain VCS/customer RTL and detailed native attribution as unqualified follow-up. Provisional regression gates return incomplete for noisy or incompatible samples.
+
+## Public benchmark submission decision - 2026-10-30
+
+- **ADR-033:** Run only the public synthetic workload and generate a versioned allowlisted ZIP for manual review/submission. Preserve unavailable and failed cases, distinguish standard/smoke/custom profiles, and omit raw logs, paths, environment variables and free-form tool output. Keep commercial licensing on the contributor host. Validate archive structure without extraction, but treat all public metrics as self-reported. Use a GitHub issue form for hardware context and reviewed failure details; never upload automatically.

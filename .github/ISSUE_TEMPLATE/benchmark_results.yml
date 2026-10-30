@@ -1,0 +1,43 @@
+name: Benchmark results
+description: Submit public synthetic benchmark results, including commercial simulators.
+title: "[Benchmark] Simulator and version"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Run scripts/public_benchmark.py using docs/23_PUBLIC_BENCHMARK_SUBMISSIONS.md.
+        Submit only the reviewed submission.zip, not the raw output directory.
+        Check that you are permitted to share your simulator's benchmark results.
+  - type: textarea
+    id: results
+    attributes:
+      label: Results archive
+      description: Drag submission.zip here. Failed and smoke runs are useful too.
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Repository commit
+      description: Output of git rev-parse HEAD; mention local modifications.
+    validations:
+      required: true
+  - type: textarea
+    id: machine
+    attributes:
+      label: Machine and environment
+      description: CPU model, RAM, Linux distribution, native/VM/container/WSL, Python/conda, and whether the host was otherwise idle. Omit hostnames and usernames.
+    validations:
+      required: true
+  - type: textarea
+    id: observations
+    attributes:
+      label: Observations or sanitized failure details
+      description: Mention non-default flags, license wait, compile failures or timing differences. Remove paths, license-server names and proprietary details before posting.
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Submission review
+      options:
+        - label: I reviewed submission.json and am permitted to share these benchmark results publicly.
+          required: true

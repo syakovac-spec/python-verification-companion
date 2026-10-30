@@ -1,5 +1,11 @@
 # Publication candidate status
 
+## Public benchmark submissions - 2026-10-30
+
+Added scripts/public_benchmark.py with standard positive/corruption runs, short smoke mode, export of existing results, and archive validation. Submission ZIPs contain only allowlisted numeric metrics, bounded tool-version tokens, workload/stimulus/semantic hashes, requested simulator and qualification status. Private logs/paths/license settings remain local. Added a Benchmark results GitHub issue form and docs/23_PUBLIC_BENCHMARK_SUBMISSIONS.md. No automatic network upload occurs.
+
+Qualification includes public-runner smoke execution on Icarus 13 and archive validation, plus an unavailable-VCS run that retains both cases as unavailable and still produces a valid submission. Commercial simulator execution remains unqualified locally. Unit tests cover canary data exclusion, invalid/nonfinite fields, empty false-positive reports, archive member rejection and overwrite refusal. Full standard benchmark execution remains the preceding EXT-02 qualification; this change adds the public submission workflow.
+
 ## EXT-02 measured performance work - 2026-10-30
 
 Added scripts/benchmark_simulation.py, profile_evidence.py and compare_benchmarks.py. The Linux/WSL harness uses the active interpreter and shared simulator adapter, generates 1,000-transaction checked traffic, and compares one versus 1,024 observable RTL accumulator lanes. Baseline/cached-handle variants preserve identical observations, checks, coverage and finalization. Each sample retains source/tool/configuration identity, stimulus, simulator XML, evidence, stage timing and simulator-process peak RSS. See docs/22_PERFORMANCE_BENCHMARKS.md and evidence/performance-summary.json for commands and exact results.
@@ -49,3 +55,5 @@ Executed commands: `python scripts/qualify_m2_units.py python311-icarus13`; `pyt
 M5 is partially advanced, not declared complete. Schema migration policy, independent fresh-machine release qualification and broader release hardening remain. No external user DUT, complete AXI VIP, native Windows simulator/solver environment, or general new-protocol replay is qualified by these results.
 
 EXT-02 final validation: all 28 main simulation cases qualified (24 positive, four deliberate corruption). Both repeated positive reports contain a loop-time group above 20% spread, so performance-gate self-comparisons correctly return incomplete. A stable automatic performance baseline remains open. All 71 tests also pass on Linux Python 3.11.18.
+
+Public submission validation: 75 unit tests pass on Windows Python 3.10.7. Final Icarus 13 smoke archive contains two qualified positive and two qualified corruption cases. Export of the existing 12-positive/two-corruption benchmark succeeds. Missing VCS produces a validated archive with both case groups unavailable and exit codes 1. See evidence/public-submission-summary.json.

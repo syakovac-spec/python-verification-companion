@@ -102,3 +102,7 @@ MIT; see [LICENSE](LICENSE). Dependencies retain their own licenses. Pending lic
 ## Performance benchmarks
 
 See [checked performance benchmarks](docs/22_PERFORMANCE_BENCHMARKS.md) for repeated small/larger RTL workloads, solver profiling, evidence-cost measurement and conservative regression gates. These measurements preserve checks and coverage; they are not a VCS performance promise.
+
+## Contribute simulator benchmark results
+
+Run `python scripts/public_benchmark.py --sim vcs --out /tmp/pvc-public-vcs` on your licensed Linux setup (or select another backend). Review the generated submission.zip and attach it to a Benchmark results issue. See [public benchmark submissions](docs/23_PUBLIC_BENCHMARK_SUBMISSIONS.md) for smoke mode, privacy boundaries and the submission workflow. No data uploads automatically.

@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-30",
+  "unit_tests_passed": 75,
+  "runs": {
+    "icarus_smoke": {
+      "profile": "smoke",
+      "requested_simulator": "icarus",
+      "archive_sha256": "e92f939e36b51b8569664d31bafdbd6cc180c242f87d388e77e021161ad35e6e",
+      "cases": {
+        "positive": {
+          "status": "qualified",
+          "returncode": 0,
+          "rows": 2
+        },
+        "corruption": {
+          "status": "qualified",
+          "returncode": 0,
+          "rows": 2
+        }
+      }
+    },
+    "vcs_unavailable": {
+      "profile": "smoke",
+      "requested_simulator": "vcs",
+      "archive_sha256": "0de5a0a35117f5273458064f93b734fe03edfa37dc991e7141c616f56d1bb9ef",
+      "cases": {
+        "positive": {
+          "status": "unavailable",
+          "returncode": 1,
+          "rows": 0
+        },
+        "corruption": {
+          "status": "unavailable",
+          "returncode": 1,
+          "rows": 0
+        }
+      }
+    },
+    "existing_full_export": {
+      "profile": "custom",
+      "requested_simulator": "unknown",
+      "archive_sha256": "4f74ec2a26522ef840d877a43c4f79448d3223df49951ce90bd960b833756ba4",
+      "cases": {
+        "positive": {
+          "status": "qualified",
+          "returncode": null,
+          "rows": 12
+        },
+        "corruption": {
+          "status": "qualified",
+          "returncode": null,
+          "rows": 2
+        }
+      }
+    }
+  },
+  "commercial_execution_qualified": false
+}
