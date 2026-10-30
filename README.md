@@ -6,7 +6,7 @@ This is an early source release. M0–M4 are implemented; M5 release hardening r
 
 ## Use with your own DUT
 
-Read [Extending to other buses and interfaces](docs/17_EXTENDING_TO_OTHER_INTERFACES.md) for the UVM component map, implementation steps, protocol-specific considerations, and a copyable coding-agent prompt. Start with `examples/ready_valid` for reusable source/sink/passive agents and monitor-to-scoreboard connections. Use the APB example for solver-backed constraints, bounded coverage targeting and recorded replay. The public `EvidenceRecorder` API lets either approach write checked evidence without changing the core.
+Read [Extending to other buses and interfaces](docs/17_EXTENDING_TO_OTHER_INTERFACES.md) for the UVM component map, implementation steps, protocol-specific considerations, and a copyable coding-agent prompt. Start with `examples/ready_valid` for reusable source/sink/passive agents and monitor-to-scoreboard connections. Use the APB example for solver-backed constraints, bounded coverage targeting and recorded replay. The public `EvidenceRecorder` API lets either approach write checked evidence without changing the core. Use the [agent generator](docs/21_AGENT_GENERATOR.md) to create an editable ready/valid kit with explicit signal bindings, reference-model hooks, coverage goals and checker qualification tests.
 
 ## Install
 
@@ -25,7 +25,7 @@ The evidence core alone can also be installed directly from the public URL into 
 python -m pip install "git+https://github.com/syakovac-spec/python-verification-companion.git"
 ```
 
-Clone the repository for the full RTL examples, simulation runners, tests and documentation; the installed Python package contains the evidence core.
+Clone the repository for the full RTL examples, simulation runners, tests and documentation; the installed Python package contains the evidence core and agent-generator templates.
 
 The original qualified simulation environment is Ubuntu 22.04 x86-64 (including WSL2), Python 3.10, Icarus Verilog/vvp 11.0. See [Python 3.11 / Icarus 13 qualification](docs/18_TOOLCHAIN_QUALIFICATION.md) for the additional toolchain and exact results. The Python evidence core also has test results on Windows Python 3.10.7. Native Windows simulation/solver support is not qualified.
 

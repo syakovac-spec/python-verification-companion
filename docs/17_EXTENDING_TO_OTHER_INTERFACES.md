@@ -2,6 +2,8 @@
 
 Use standard pyuvm components for UVM structure and `verification_evidence` for portable, checked coverage evidence. The evidence core is protocol independent. APB is one reference environment, not a required base class. New interfaces do not require changes to the core schema or forks of the APB agent.
 
+For an editable generated starting point, see the [agent generator](21_AGENT_GENERATOR.md). It ships in the wheel and accepts explicit width and signal bindings.
+
 ## Start with an executable second protocol
 
 The [ready/valid example](../examples/ready_valid/) verifies an 8-bit elastic buffer with independent input/output observations, randomized legal data, backpressure, an automatic FIFO scoreboard, and checked functional goals. Run from the repository root after installing the simulation dependencies:

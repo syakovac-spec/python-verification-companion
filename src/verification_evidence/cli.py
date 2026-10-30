@@ -6,6 +6,22 @@ from .core import merge, summarize, validate
 
 
 def main(argv=None):
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == 'create-agent':
+        from .scaffold import create_agent
+        generator = argparse.ArgumentParser(description='Generate an editable ready/valid agent kit')
+        generator.add_argument('--interface', required=True)
+        generator.add_argument('--output', required=True)
+        options = generator.parse_args(argv[1:])
+        try:
+            print(json.dumps(create_agent(options.interface, options.output), sort_keys=True))
+            return 0
+        except (ValueError, TypeError, KeyError) as exc:
+            print(json.dumps({'status': 'invalid', 'error': str(exc)}), file=sys.stderr)
+            return 2
+        except OSError as exc:
+            print(json.dumps({'status': 'infrastructure_error', 'error': str(exc)}), file=sys.stderr)
+            return 4
     parser = argparse.ArgumentParser(description="Validate and assess verification evidence")
     parser.add_argument("operation", choices=["validate", "summarize", "gaps", "merge"])
     parser.add_argument("inputs", nargs="+")

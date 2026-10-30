@@ -27,13 +27,13 @@ Recommended sequence: establish the performance baseline early, build the reusab
 
 ## EXT-01 — Agent generator and reusable agent kit
 
-- [ ] Define a versioned interface description for signal bindings, widths, clock/reset, protocol roles and transaction fields.
-- [ ] Generate transaction, configuration, sequence, sequencer/driver, monitor, active/passive agent, scoreboard, coverage-plan, environment and test files using standard pyuvm composition. Preserve a plain-cocotb integration path.
-- [ ] Provide explicit implementation points for protocol behavior and the independent DUT reference model. Do not generate a scoreboard that treats the driver's intended values as observed truth.
-- [ ] Generate executable tests for positive traffic, missing/unexpected responses, reset interruption and malformed traffic where applicable.
-- [ ] Document the generated files and provide an agent handoff example for integrating a real DUT.
+- [x] Define a versioned interface description for signal bindings, widths, clock/reset, protocol roles and transaction fields.
+- [x] Generate transaction, configuration, sequence, sequencer/driver, monitor, active/passive agent, scoreboard, coverage-plan, environment and test files using standard pyuvm composition. Preserve a plain-cocotb integration path.
+- [x] Provide explicit implementation points for protocol behavior and the independent DUT reference model. Do not generate a scoreboard that treats the driver's intended values as observed truth.
+- [x] Generate executable tests for positive traffic, missing/unexpected responses, reset interruption and malformed traffic where applicable.
+- [x] Document the generated files and provide an agent handoff example for integrating a real DUT.
 
-Acceptance: generate and complete a new interface environment without editing the core; it passes its positive cases and detects the intended negative cases. A proposed command such as `vevidence create-agent --interface interfaces/control_bus.yaml --output verification/control_bus` is a design sketch only; it does not exist today. Final CLI/schema choices must follow the executable integration.
+Implemented 2026-10-29 for the bounded ready/valid template: see [generation and real-DUT handoff](21_AGENT_GENERATOR.md). The executable command is `vevidence create-agent --interface interfaces/packet16.json --output verification/packet16` (JSON, schema version 1). A generated 16-bit environment with renamed pins closes positive coverage and detects corrupted data in pyuvm and plain cocotb on Icarus 13 and Verilator 5.052. Six synthetic checker tests separately exercise positive/missing/unexpected/reset/stale/malformed cases. Generation and checker tests also run from an installed core-only wheel outside the checkout. Arbitrary protocol synthesis, general solver generation, and RTL reset/malformed mutation campaigns are not claimed; adapt and qualify the explicit hooks for a real DUT. EXT-04/05/06 remain separate work.
 
 ## EXT-02 — Performance benchmarks and profiling
 

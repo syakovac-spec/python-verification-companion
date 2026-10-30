@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "name": "packet16",
+  "protocol": "ready_valid",
+  "width": 16,
+  "clock": "clock",
+  "reset": "reset_n",
+  "reset_policy": "discard",
+  "fields": [
+    {
+      "name": "data",
+      "width": 16
+    }
+  ],
+  "channels": {
+    "tx": {
+      "role": "source",
+      "signals": {
+        "valid": "request_valid",
+        "ready": "request_ready",
+        "data": "request_payload"
+      }
+    },
+    "rx": {
+      "role": "sink",
+      "signals": {
+        "valid": "response_valid",
+        "ready": "response_ready",
+        "data": "response_payload"
+      }
+    }
+  }
+}

@@ -20,5 +20,8 @@ vevidence = "verification_evidence.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+verification_evidence = ["templates/ready_valid/*.py", "templates/ready_valid/*.md", "templates/ready_valid/rtl/*.sv"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

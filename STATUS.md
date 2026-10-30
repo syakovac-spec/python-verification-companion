@@ -1,8 +1,16 @@
 # Publication candidate status
 
+## EXT-01 agent generator � 2026-10-29
+
+Implemented `vevidence create-agent --interface interfaces/packet16.json --output verification/packet16`. Versioned JSON validates signal bindings, width, clock/reset, source/sink roles and packed transaction field. Wheel-packaged templates produce configuration, standard pyuvm transaction/sequence/sequencer/driver/monitor/active-passive agent/subscriber, independent reference/scoreboard hooks, a separate coverage plan, environment, plain-cocotb path, sampling harness, runner and checker tests. Existing output is never overwritten. See docs/21_AGENT_GENERATOR.md for the real-DUT agent handoff and bounded scope.
+
+Validation: 67 repository unit tests pass on Windows Python 3.10.7. Generated 16-bit renamed-pin kit runs four RTL qualifications per simulator on Python 3.11.18/cocotb 2.1.0/pyuvm 5: Icarus 13 and Verilator 5.052. Both composition styles close positive coverage and detect deliberate ORDER corruption. Six generated synthetic checker tests pass, including missing/unexpected response, reset interruption/stale response and malformed stalled traffic. Installed core-only wheel generation and checker execution outside the checkout are also verified. Commands: `python -m unittest discover -s tests -q`, generated `python -m unittest test_contract -v`, and generated `python run.py --sim icarus` / `--sim verilator`. Sanitized results: evidence/agent-generator-summary.json.
+
+This completes EXT-01's first executable template, not arbitrary bus synthesis. General solver generation/adaptive closure, reusable matching policies and further protocols remain EXT-04/05/08. VCS and real customer DUT integration require local qualification. M5 remains open. Next highest-priority item is EXT-02 measured performance/scalability benchmarks.
+
 ## Planned extensions — 2026-10-29
 
-The owner-requested [extension TODO backlog](docs/20_EXTENSION_BACKLOG.md) records agent generation, reusable scoreboards and sampling adapters, coverage planning/closure, performance benchmarks, build caching/parallel regressions, scalable evidence, additional protocols, register abstraction and failure triage/replay. It includes priorities, dependencies and acceptance criteria, plus separate Icarus, encrypted-model and SV-UVM interoperability workstreams. All are recorded as future work; no implementation or qualification status is changed by this documentation update. Recommended deliverables are the agent/scoreboard kit, a measured performance/scalability baseline, and an AXI-Lite reference environment. Existing M5 release-hardening work remains open.
+The owner-requested [extension TODO backlog](docs/20_EXTENSION_BACKLOG.md) records agent generation, reusable scoreboards and sampling adapters, coverage planning/closure, performance benchmarks, build caching/parallel regressions, scalable evidence, additional protocols, register abstraction and failure triage/replay. It includes priorities, dependencies and acceptance criteria, plus separate Icarus, encrypted-model and SV-UVM interoperability workstreams. At recording time all were future work; no implementation or qualification status is changed by this documentation update. Recommended deliverables are the agent/scoreboard kit, a measured performance/scalability baseline, and an AXI-Lite reference environment. Existing M5 release-hardening work remains open.
 
 ## Portability and VCS sampling race — 2026-10-29
 
