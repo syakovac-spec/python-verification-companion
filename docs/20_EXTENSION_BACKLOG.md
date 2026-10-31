@@ -52,13 +52,15 @@ Local implementation (2026-10-30): [benchmark harness and profiling guide](22_PE
 
 ## EXT-03 — Build caching and parallel regression execution
 
-- [ ] Cache compiled designs by source/include content, parameters, defines, tool identity, backend and relevant build options.
-- [ ] Reuse compatible builds across seeds and replay runs; reject stale/incompatible entries and handle concurrent cache access safely.
-- [ ] Schedule independent tests/seeds in bounded parallel processes with isolated artifacts and configurable CPU, memory and commercial-license limits.
-- [ ] Retain individual failed, aborted, timed-out and incomplete runs in aggregate reports.
-- [ ] Evaluate Linux-native build/artifact storage versus Windows-mounted WSL paths as a measured environment option.
+- [x] Cache compiled designs by source/include content, parameters, defines, tool identity, backend and relevant build options.
+- [x] Reuse compatible builds across seeds and replay runs; reject stale/incompatible entries and handle concurrent cache access safely.
+- [x] Schedule independent tests/seeds in bounded parallel processes with isolated artifacts and configurable CPU, memory and commercial-license limits.
+- [x] Retain individual failed, aborted, timed-out and incomplete runs in aggregate reports.
+- [x] Evaluate Linux-native build/artifact storage versus Windows-mounted WSL paths as a measured environment option.
 
 Acceptance: prove cache invalidation and concurrent-run isolation, then measure turnaround/throughput improvement. Do not describe regression parallelism as faster execution of an individual simulation.
+
+Bounded implementation: see [EXT-03 guide](24_BUILD_CACHE_AND_REGRESSIONS.md) and `evidence/cache-regression-summary.json`. Linux/WSL default-build caching qualifies Icarus 13 and Verilator 5.052; other backends/custom options bypass reuse. Budgets govern admission, not hard resource enforcement. Commercial cache relocation/dependency qualification remains follow-up.
 
 ## EXT-04 — Reusable scoreboard library
 

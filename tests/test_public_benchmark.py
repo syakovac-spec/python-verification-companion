@@ -56,6 +56,20 @@ class PublicSubmissionTests(unittest.TestCase):
             (root/'report.json').write_text(json.dumps(report))
             self.assertEqual(module.public_report(root)['status'], 'not_qualified')
 
+    def test_scheduling_metadata_and_legacy_archives(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); report=self.report()
+            report['environment'].update(workers=2, cache_enabled=True)
+            (root/'report.json').write_text(json.dumps(report))
+            data=module.package(root, root, root/'submission.zip')
+            env=data['cases']['positive']['environment']
+            self.assertEqual(env['workers'], 2)
+            self.assertTrue(env['cache_enabled'])
+            env['workers']=0
+            with self.assertRaises(ValueError): module.validate(data)
+            del env['workers']; del env['cache_enabled']
+            module.validate(data)
+
     def test_validator_rejects_extra_archive_members(self):
         with tempfile.TemporaryDirectory() as directory:
             archive=Path(directory)/'unsafe.zip'

@@ -8,6 +8,8 @@ This is an early source release. M0–M4 are implemented; M5 release hardening r
 
 Read [Extending to other buses and interfaces](docs/17_EXTENDING_TO_OTHER_INTERFACES.md) for the UVM component map, implementation steps, protocol-specific considerations, and a copyable coding-agent prompt. Start with `examples/ready_valid` for reusable source/sink/passive agents and monitor-to-scoreboard connections. Use the APB example for solver-backed constraints, bounded coverage targeting and recorded replay. The public `EvidenceRecorder` API lets either approach write checked evidence without changing the core. Use the [agent generator](docs/21_AGENT_GENERATOR.md) to create an editable ready/valid kit with explicit signal bindings, reference-model hooks, coverage goals and checker qualification tests.
 
+For repeated tests and seeds, see [build caching and bounded parallel regressions](docs/24_BUILD_CACHE_AND_REGRESSIONS.md). Opt-in build reuse preserves private artifacts; CPU, estimated memory and license budgets bound concurrency. Other simulator backends retain normal builds.
+
 ## Install
 
 Use your existing Python or conda environment. The runners use its interpreter and do not activate another environment. Select your simulator with `--sim vcs`, `--sim verilator`, `--sim questa`, or `SIM`; Icarus is the default only. See [simulator portability, conda and solver profiling](docs/19_SIMULATOR_PORTABILITY.md) for the tested matrix, VCS setup and the race-free sampling contract.

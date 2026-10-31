@@ -80,3 +80,8 @@ ID and date; question; options considered; decision; evidence/experiment; affect
 ## Public benchmark submission decision - 2026-10-30
 
 - **ADR-033:** Run only the public synthetic workload and generate a versioned allowlisted ZIP for manual review/submission. Preserve unavailable and failed cases, distinguish standard/smoke/custom profiles, and omit raw logs, paths, environment variables and free-form tool output. Keep commercial licensing on the contributor host. Validate archive structure without extraction, but treat all public metrics as self-reported. Use a GitHub issue form for hardware context and reviewed failure details; never upload automatically.
+
+
+## Build reuse and regression decision - 2026-10-30
+
+- **ADR-034:** Use opt-in content-verified local cache entries, per-key process locks and private build copies. Cache only qualified default Icarus/Verilator builds with tracked dependencies; bypass unknown backend/options. Preserve public cocotb runner APIs and the active interpreter. Run independent seeds in bounded subprocess groups with admission budgets, timeout/cancellation records and unchanged evidence gates. Measure batch throughput and cache overhead; do not claim faster individual simulation or commercial cache qualification. See doc 24.

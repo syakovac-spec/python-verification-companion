@@ -25,6 +25,8 @@ class BenchmarkGateTests(unittest.TestCase):
 
     def test_noisy_or_incompatible_cannot_pass(self):
         for mutate in (lambda r: r['environment'].update(tools='other'),
+                       lambda r: r['environment'].update(workers=2),
+                       lambda r: r['environment'].update(cache_enabled=True),
                        lambda r: r['rows'][0].update(semantic_sha256='different'),
                        lambda r: r['comparisons'][0]['cached']['loop_seconds'].update(samples=1),
                        lambda r: r['comparisons'][0]['cached']['loop_seconds'].update(relative_spread=.5)):

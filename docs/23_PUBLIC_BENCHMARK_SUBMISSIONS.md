@@ -1,5 +1,10 @@
 # Submit public benchmark results
 
+Exports retain worker count, cache-enabled status and per-row seeds when available.
+Version 1 archives without these optional fields remain valid. Use the harness in
+[build reuse and regressions](24_BUILD_CACHE_AND_REGRESSIONS.md) for custom parallel
+or cached runs, then export those directories. Compare like-for-like settings.
+
 Commercial simulator users can help improve backend compatibility and performance
 by running the same public synthetic RTL and submitting a small results archive.
 No customer RTL, encrypted IP, account credentials or network service is required.

@@ -24,12 +24,15 @@ def build_flags():
 
 
 def configure(parser):
+    parser.add_argument("--build-cache", help="opt-in local Linux build cache (qualified backends only)")
     parser.add_argument("--sim", default=simulator(), help="cocotb simulator name; defaults to SIM or icarus")
     parser.add_argument("--build-arg", action="append", default=[], help="additional compiler argument (use --build-arg=-flag)")
     parser.add_argument("--test-arg", action="append", default=[], help="additional simulator argument")
 
 
 def select(args):
+    if getattr(args, 'build_cache', None):
+        os.environ['PVC_BUILD_CACHE'] = str(Path(args.build_cache).resolve())
     os.environ["SIM"] = args.sim.lower()
     # Workers inherit these values. Do not erase options when reparsing a worker.
     if args.build_arg:
@@ -74,17 +77,23 @@ def vcs_make_command(*, sources, top, parameters, out, module, plusargs):
             "PLUSARGS=" + " ".join(plusargs)]
 
 
-def run(*, sources, top, parameters, out, module, test_dir, extra_env, seed=42, plusargs=()):
+def run(*, sources, top, parameters, out, module, test_dir, extra_env, seed=42, plusargs=(), includes=(), defines=None):
     """Run using the active interpreter; never activate or manufacture an environment."""
     out = Path(out).resolve()
     start = time.perf_counter()
     timing = {"simulator": simulator(), "python": sys.executable}
+    defines = dict(defines or {})
+    timing['cache'] = {'status': 'disabled'}
     original_path = os.environ.get("PATH")
     # cocotb supplies PYTHONHOME to build tools too. Their `python3` helpers
     # must resolve to this interpreter, not an unrelated system Python.
     os.environ["PATH"] = str(Path(sys.executable).parent) + os.pathsep + (original_path or "")
     try:
         if simulator() == "vcs":
+            if includes or defines:
+                raise ValueError('VCS includes/defines currently require explicit backend build arguments')
+            if os.environ.get('PVC_BUILD_CACHE'):
+                timing['cache'] = {'status': 'bypass', 'reason': 'backend not cache-qualified'}
             env = os.environ.copy()
             env.update(extra_env)
             # cocotb-config must come from the same interpreter, including conda.
@@ -100,10 +109,30 @@ def run(*, sources, top, parameters, out, module, test_dir, extra_env, seed=42, 
             except ImportError:
                 from cocotb.runner import get_runner
             runner = get_runner(simulator())
-            runner.build(sources=sources, hdl_toplevel=top, parameters=parameters,
-                         build_args=build_flags(), build_dir=out / "build", always=True)
+            def build():
+                runner.build(sources=sources, hdl_toplevel=top, parameters=parameters,
+                             includes=includes, defines=defines,
+                             build_args=build_flags(), build_dir=out / "build", always=True)
+            cache = os.environ.get('PVC_BUILD_CACHE')
+            if cache and sys.platform == 'linux' and simulator() in ('icarus', 'verilator') and build_flags() == {'icarus': ['-g2012'], 'verilator': ['--timing', '-Wno-fatal']}[simulator()] and not os.environ.get('WAVES'):
+                from .build_cache import descriptor, materialize, runtime_identity
+                tools = identity()
+                describe = lambda: descriptor(sources, includes, defines, top, parameters, build_flags(), tools)
+                try:
+                    tools['native_resources'] = runtime_identity(simulator())
+                    describe()
+                except (ValueError, UnicodeError) as exc:
+                    timing['cache'] = {'status': 'bypass', 'reason': str(exc)}
+                    build()
+                else:
+                    timing['cache'] = materialize(cache, describe, out / 'build', build)
+            else:
+                if cache:
+                    timing['cache'] = {'status': 'bypass', 'reason': 'unqualified backend/platform, custom flags or wave settings'}
+                build()
             timing["build_seconds"] = time.perf_counter() - start
             runner.test(hdl_toplevel=top, test_module=module, test_dir=test_dir, seed=seed,
+                        build_dir=out / 'build', hdl_toplevel_lang='verilog' if timing['cache']['status'] == 'hit' else None, parameters=parameters,
                         results_xml=str(out / "results.xml"), plusargs=list(plusargs),
                         test_args=json.loads(os.environ.get("PVC_TEST_ARGS", "[]")), extra_env=extra_env)
     finally:

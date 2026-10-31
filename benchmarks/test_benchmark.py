@@ -41,7 +41,7 @@ async def benchmark(dut):
                 model.sample(channel, tick, signals)
             metrics['checking_seconds'] += time.perf_counter() - started
 
-    values = data_sequence(count=int(os.environ['BENCH_TRANSACTIONS']))
+    values = data_sequence(seed=int(os.environ.get('BENCH_SEED', '42')), count=int(os.environ['BENCH_TRANSACTIONS']))
     (directory / 'stimulus.json').write_text(json.dumps(values))
     tasks = [cocotb.start_soon(monitor()), cocotb.start_soon(sink(rx))]
     error = None

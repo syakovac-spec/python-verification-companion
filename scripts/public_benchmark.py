@@ -14,7 +14,7 @@ SIMULATORS = ('icarus', 'verilator', 'vcs', 'questa', 'xcelium', 'riviera')
 METRICS = ('process_seconds', 'loop_seconds', 'monitor_seconds', 'checking_seconds',
            'finalize_seconds', 'summary_seconds', 'write_seconds', 'body_seconds',
            'peak_rss_kib', 'evidence_bytes', 'monitor_wakeups')
-FIELDS = ('lanes', 'transactions', 'repeat', 'corrupt', 'returncode')
+FIELDS = ('seed', 'lanes', 'transactions', 'repeat', 'corrupt', 'returncode')
 HASHES = ('semantic_sha256', 'stimulus_sha256')
 README = '''Public benchmark submission v1
 
@@ -63,6 +63,8 @@ def public_report(directory, returncode=None):
         simulator_version=version(tools.get({'icarus': 'iverilog', 'riviera': 'vsimsa',
             'questa': 'vsim', 'xcelium': 'xrun'}.get(simulator, simulator))),
         cpu_count=env.get('cpu_count') if type(env.get('cpu_count')) is int else None,
+        workers=env.get('workers') if type(env.get('workers')) is int else 1,
+        cache_enabled=env.get('cache_enabled') is True,
         source_digest=sha(env.get('sources', {})),
         flags_digest=sha([env.get('build_flags', []), env.get('test_flags', [])]),
         nondefault_flags=env.get('build_flags', []) != {'icarus': ['-g2012'],
@@ -103,8 +105,13 @@ def validate(data):
             raise ValueError('invalid returncode')
         env = case['environment']
         if env:
-            if set(env) != {'simulator', 'python', 'cocotb', 'simulator_version', 'cpu_count', 'source_digest', 'flags_digest', 'nondefault_flags'}:
+            required = {'simulator', 'python', 'cocotb', 'simulator_version', 'cpu_count', 'source_digest', 'flags_digest', 'nondefault_flags'}
+            if not required <= set(env) or set(env) - required - {'workers', 'cache_enabled'}:
                 raise ValueError('unexpected environment field')
+            if 'workers' in env and (type(env['workers']) is not int or env['workers'] < 1):
+                raise ValueError('invalid worker count')
+            if 'cache_enabled' in env and type(env['cache_enabled']) is not bool:
+                raise ValueError('invalid cache setting')
             if env['simulator'] not in SIMULATORS or type(env['nondefault_flags']) is not bool:
                 raise ValueError('invalid simulator/flags')
             if env['cpu_count'] is not None and type(env['cpu_count']) is not int:

@@ -9,8 +9,8 @@ def compare(baseline, current, runtime_limit=1.25, memory_limit=1.15):
         return {'gate': 'incomplete', 'reason': 'missing or unequal workload groups'}
     if not baseline['qualified'] or not current['qualified']:
         return {'gate': 'failed', 'reason': 'benchmark qualification failed'}
-    for key in ('tools', 'dependencies', 'build_flags', 'test_flags', 'platform', 'cpu_count', 'waves', 'checks', 'seed'):
-        if baseline['environment'][key] != current['environment'][key]:
+    for key in ('tools', 'dependencies', 'build_flags', 'test_flags', 'platform', 'cpu_count', 'waves', 'checks', 'seed', 'workers', 'cache_enabled'):
+        if baseline['environment'].get(key) != current['environment'].get(key):
             return {'gate': 'incomplete', 'reason': f'environment mismatch: {key}'}
     def keys(report):
         return {(r['lanes'], r['transactions'], r['variant'], r['corrupt'], r['semantic_sha256'], r['stimulus_sha256']) for r in report['rows']}

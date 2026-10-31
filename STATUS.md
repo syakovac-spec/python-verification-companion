@@ -1,5 +1,16 @@
 # Publication candidate status
 
+## EXT-03 build caching and parallel regressions - 2026-10-30
+
+Implemented opt-in content/tool/environment keyed build reuse with per-key process locking, integrity checks and private build copies. Added bounded parallel tests/seeds, CPU/memory/license admission budgets, process-group timeout/cancellation and retained failed/incomplete outcomes. Public benchmark exports retain optional worker/cache settings and seeds; comparison rejects mismatched scheduling settings. See docs/24_BUILD_CACHE_AND_REGRESSIONS.md and evidence/cache-regression-summary.json.
+
+Qualification: 82 unit tests pass on Linux Python 3.11.18 and Windows Python 3.10.7 (three Linux-only skips). Icarus 13/cocotb 2.1.0 multi-seed runs preserve exact evidence hashes; four concurrent Verilator 5.052 cases produce one build and three hits. Parameter corruption forces a rebuild and ORDER detection. Two forced timeouts remain non-qualified. All four cocotb 1.9.2 stream cases qualify, and APB cache-hit replay reproduces pin trace, samples and check records exactly. Public archive export/validation passes. Reproduce unit tests with `python -m unittest discover -s tests -q`; benchmark commands and supported boundaries are in doc 24. Existing stream/APB runners accept `--build-cache DIR`.
+
+Four-test Icarus batches: uncached serial 40.73s; cold-cache serial 50.70s; warm-cache serial 69.46s; warm-cache two-worker 19.73s. Mounted-output uncached serial was 47.81s. Timing variability is substantial: publish descriptive measurements, not a stable performance ratio. Cache overhead outweighs tiny-design compilation savings. Source/Python paths remained mounted during the output-storage comparison. Earlier qualification cohorts retain their own source hashes in the summary.
+
+Cache qualification is bounded to Linux/WSL default Icarus/Verilator builds. Custom flags, untracked dependencies and other backends bypass cache and build normally. Commercial cache relocation and execution remain unqualified locally. Resource settings are admission estimates, not hard OS or license-server enforcement. EXT-03 is complete within these boundaries; M5 remains open. Next item is EXT-04 reusable scoreboards.
+
+
 ## Public benchmark submissions - 2026-10-30
 
 Added scripts/public_benchmark.py with standard positive/corruption runs, short smoke mode, export of existing results, and archive validation. Submission ZIPs contain only allowlisted numeric metrics, bounded tool-version tokens, workload/stimulus/semantic hashes, requested simulator and qualification status. Private logs/paths/license settings remain local. Added a Benchmark results GitHub issue form and docs/23_PUBLIC_BENCHMARK_SUBMISSIONS.md. No automatic network upload occurs.

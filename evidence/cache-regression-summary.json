@@ -1,0 +1,545 @@
+{
+  "date": "2026-10-30",
+  "platform": "WSL2 Ubuntu 22.04 x86_64",
+  "python": "3.11.18",
+  "cohorts": {
+    "uncached": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 40.728258887073025,
+      "tests_per_second": 0.09821190763618876,
+      "workers": 1,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "6bcfa7fd04181488dea91b2e11b429e4a3949ba25c8e2afac4451acf0317041e",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "6a73b3fb11469210ff6fa884672232d55bc9856cabef173e092f674af48e40b5",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "disabled": 4
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "6abdfd30e7bf6eeff6cca1a782e5c4c280453592b3073b7dba418c3a9d696889"
+      ],
+      "median_build_seconds": 2.5882636479800567
+    },
+    "cold": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 50.69856041390449,
+      "tests_per_second": 0.0788977037482699,
+      "workers": 1,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "fcb87d759f8e77c95a90c649f4ebbf350684003c41759b335fc6a2cc99b562e3",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "3546175e2d46da60c99dff8d9e0817855eabb8c4a82a4b84dbdc156c0f73e6bc",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "miss": 1,
+        "hit": 3
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "6abdfd30e7bf6eeff6cca1a782e5c4c280453592b3073b7dba418c3a9d696889"
+      ],
+      "median_build_seconds": 4.672668490442447
+    },
+    "warm-serial": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 69.4570660549216,
+      "tests_per_second": 0.05758953303378941,
+      "workers": 1,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "fcb87d759f8e77c95a90c649f4ebbf350684003c41759b335fc6a2cc99b562e3",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "3546175e2d46da60c99dff8d9e0817855eabb8c4a82a4b84dbdc156c0f73e6bc",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "hit": 4
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "6abdfd30e7bf6eeff6cca1a782e5c4c280453592b3073b7dba418c3a9d696889"
+      ],
+      "median_build_seconds": 5.544118382036686
+    },
+    "parallel": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 19.730736315017566,
+      "tests_per_second": 0.2027293830365316,
+      "workers": 2,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "fcb87d759f8e77c95a90c649f4ebbf350684003c41759b335fc6a2cc99b562e3",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "3546175e2d46da60c99dff8d9e0817855eabb8c4a82a4b84dbdc156c0f73e6bc",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "hit": 4
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "6abdfd30e7bf6eeff6cca1a782e5c4c280453592b3073b7dba418c3a9d696889"
+      ],
+      "median_build_seconds": 3.42172245006077
+    },
+    "seeds": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 17.960817479994148,
+      "tests_per_second": 0.22270701233145115,
+      "workers": 2,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "6bcfa7fd04181488dea91b2e11b429e4a3949ba25c8e2afac4451acf0317041e",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "6a73b3fb11469210ff6fa884672232d55bc9856cabef173e092f674af48e40b5",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "hit": 4
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "0c3dc1fec56398b0613f1e92b67dc0f52f33349f39cb3b3cb5408399fedc84d9",
+        "75c5e567bedc430b6d1d6e50dae20d48ba46f25cace9f863526435481a47ef4a"
+      ],
+      "median_build_seconds": 3.191795947495848
+    },
+    "timeout": {
+      "qualified": false,
+      "runs": 2,
+      "regression_seconds": 0.12265609693713486,
+      "tests_per_second": 16.305752832042774,
+      "workers": 2,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "6bcfa7fd04181488dea91b2e11b429e4a3949ba25c8e2afac4451acf0317041e",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "6a73b3fb11469210ff6fa884672232d55bc9856cabef173e092f674af48e40b5",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "not_reached": 2
+      },
+      "execution_counts": {
+        "timed_out": 2
+      },
+      "gates": {
+        "not_finalized": 2
+      },
+      "semantic_hashes": [],
+      "median_build_seconds": null
+    },
+    "verilator": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 17.005631239153445,
+      "tests_per_second": 0.23521620243007949,
+      "workers": 2,
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "6bcfa7fd04181488dea91b2e11b429e4a3949ba25c8e2afac4451acf0317041e",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "6a73b3fb11469210ff6fa884672232d55bc9856cabef173e092f674af48e40b5",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "hit": 3,
+        "miss": 1
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "27fa6a1e79a029670ab2340896a3ff0cb130014f6a9cc52e2dc7c6c8054eb1ef"
+      ],
+      "median_build_seconds": 3.4607327739940956
+    },
+    "mounted": {
+      "qualified": true,
+      "runs": 4,
+      "regression_seconds": 47.81186387594789,
+      "tests_per_second": 0.08366124379460198,
+      "workers": 1,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "6bcfa7fd04181488dea91b2e11b429e4a3949ba25c8e2afac4451acf0317041e",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "6a73b3fb11469210ff6fa884672232d55bc9856cabef173e092f674af48e40b5",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "disabled": 4
+      },
+      "execution_counts": {
+        "qualified": 4
+      },
+      "gates": {
+        "pass": 4
+      },
+      "semantic_hashes": [
+        "6abdfd30e7bf6eeff6cca1a782e5c4c280453592b3073b7dba418c3a9d696889"
+      ],
+      "median_build_seconds": 3.2682472080923617
+    },
+    "parameter-corruption": {
+      "qualified": true,
+      "runs": 2,
+      "regression_seconds": 7.949960603844374,
+      "tests_per_second": 0.25157357371467437,
+      "workers": 2,
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)",
+        "iverilog_version_output_sha256": "d946c84299a479c10b1b1fb55c136f622a1c34dbc8fe475dceafc8d12c7c0e69",
+        "iverilog_sha256": "613b2a3264b0db5d882a450eee8b5d58bf8c2ecae1d7c79de345370152ef5abf",
+        "vvp": "Icarus Verilog runtime version 13.0 (stable) (v13_0)",
+        "vvp_version_output_sha256": "62720cbdf1726cadbf196ddf9fafbdfe3d67504e6939fdd8f80410d618742525",
+        "vvp_sha256": "6548b2fbdbd19c49c008c7258e0751c1227b43e109daac7b768b6f176cf7942f"
+      },
+      "source_hashes": {
+        "reference.py": "4f7c3c046114fd4defd6102903be1afd2f986288acab060ef9f42b9eb49c66f7",
+        "test_plain.py": "02655bcfdcb9eeec1c2de160b36153d1d357a832fa79b28d25a785421b1436ed",
+        "evidence.py": "d11cad9ec9b409709cbdcc8b5b05e3232c8f969fcc9b0f6b46c5ae14a05cadd5",
+        "interface_config.py": "d2d8be599d3fe24e981bffab8f1ff9e1b1e2c4a6f0ec11c7ee075685e9e30a08",
+        "coverage_plan.py": "094150849f953fe71562d68e92e4d49a8bcb6564d8c360ef27e0a5fc567d3fc5",
+        "test_benchmark.py": "233875fcee3ed258c136478aa05d49d7b33e0f856ec3f9a5305ccfeaba402689",
+        "uvm_components.py": "b55a962258a38f97eddf70120e30a7d5d34acb88cb91c1bf0f72756717ca06ad",
+        "run.py": "3633c77f5fcc2abfb10f5b4ab99221428fb4f8acee0fa57e36dcc4910fa32a8e",
+        "test_contract.py": "5a42db266bfecd2c9f5f5f69c6ee492a9850c3678a31f803dcbcc5fe2cecd879",
+        "interface.json": "e381b9234edf6d8c9be83b93cd62924ac2198d8d4aa63ac0fecac37f69896c78",
+        "bfm.py": "7d4882c26b192893beedfe8dc1e94dfcf78a049502095dbfa3d5ce4706033184",
+        "test_uvm.py": "32bbcafc1760bc9dc5b47d676f36c16ce09ea766fc61b40fab9cb52b8ed1c560",
+        "model.py": "aca9861eb9b687e325064afd6e4b2e87925d73606970aa6766304e2d093083f3",
+        "rtl/stream_top.sv": "6b0eb73ad4424da58b03849de46583c46106ffe03088ba80a0a37e50dd733665",
+        "core/build_cache.py": "6bcfa7fd04181488dea91b2e11b429e4a3949ba25c8e2afac4451acf0317041e",
+        "core/cli.py": "c3d91470a6883c260563c75191db6fe5009f80954601d1a0593002ee46677c1b",
+        "core/core.py": "f40fd194acebcaf83a4f59c920a5aad5d420d5a1ada96036eaf6b577665c6648",
+        "core/model.py": "3707ed6180c71dc95b8228c678ec09b6af352b9ab6c89cbbe3f40fff0a71c413",
+        "core/recording.py": "5c8b280e34faa4c38b3dcf67ccc98ee5f059a79704fa55ff096bf3ffa7bc7c09",
+        "core/regression.py": "6a73b3fb11469210ff6fa884672232d55bc9856cabef173e092f674af48e40b5",
+        "core/scaffold.py": "68343e86bc2b0cfdcc9bf34eebb742df6047ee05e7098bcf46538fac9f33a0c9",
+        "core/simulation.py": "19a153f0d1d0f75a1c10ec3a62d55f9555e82a5343710254eb9551a1f3b9ff87",
+        "core/__init__.py": "b7adb5da3b250e96d53298d6d307c7c0c8d3c36fee2254b1afe8837628ad29f1"
+      },
+      "cache_counts": {
+        "miss": 1,
+        "hit": 1
+      },
+      "execution_counts": {
+        "qualified": 2
+      },
+      "gates": {
+        "failed": 2
+      },
+      "semantic_hashes": [
+        "967864fb4cef5cebca7f38df007bcaae98164a3ad07695966cfb298c60acc392"
+      ],
+      "median_build_seconds": 2.961052135680802
+    }
+  },
+  "cocotb_1_9_2": {
+    "qualified": true,
+    "runs": 4,
+    "cache_counts": {
+      "miss": 2,
+      "hit": 2
+    }
+  },
+  "apb_replay": {
+    "qualified": true,
+    "same_samples": true,
+    "same_pin_trace": true,
+    "same_checker_results": true,
+    "cache": "hit"
+  },
+  "unit_tests": {
+    "linux": {
+      "run": 82,
+      "skipped": 0,
+      "passed": true
+    },
+    "windows": {
+      "run": 82,
+      "skipped": 3,
+      "passed": true
+    }
+  },
+  "limitations": [
+    "Small synthetic workloads; descriptive timings, not a stable performance gate or customer RTL prediction.",
+    "Parallelism improves batch throughput, not one simulation. Cache identity and copy overhead can exceed tiny compilation cost.",
+    "Output storage comparison keeps sources and Python environment on the Windows-mounted filesystem; it is not an all-native toolchain comparison.",
+    "Earlier parameter-corruption cohort has separately recorded source hashes.",
+    "Only Linux/WSL Icarus and Verilator default-build caching is qualified. Commercial backends bypass cache.",
+    "CPU, memory and license settings are admission estimates, not hard resource enforcement."
+  ]
+}
