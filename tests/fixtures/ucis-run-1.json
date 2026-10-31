@@ -1,0 +1,149 @@
+{
+  "catalog": {
+    "bins": [
+      {
+        "description": "Scratch readback",
+        "digest": "classifier-v1",
+        "id": "BIN-1",
+        "threshold": 1,
+        "version": "1"
+      }
+    ],
+    "checkers": [
+      {
+        "description": "Compare observed readback",
+        "digest": "model-v1",
+        "event_types": [
+          "transfer"
+        ],
+        "id": "CHECK-1",
+        "version": "1",
+        "xz_policy": "inconclusive on X/Z"
+      }
+    ],
+    "exclusions": [],
+    "obligations": [
+      {
+        "bin_id": "BIN-1",
+        "checker_ids": [
+          "CHECK-1"
+        ],
+        "goal": 3,
+        "id": "OB-1",
+        "profiles": [
+          "rtl"
+        ],
+        "requirement_id": "REQ-1"
+      }
+    ],
+    "requirements": [
+      {
+        "id": "REQ-1",
+        "source_revision": "demo:1",
+        "statement": "Readback matches the observed write"
+      }
+    ],
+    "revision": "demo-v1",
+    "schema_version": "1.0"
+  },
+  "runs": [
+    {
+      "checks": [
+        {
+          "checker_id": "CHECK-1",
+          "event_ids": [
+            "E-1"
+          ],
+          "id": "C-1",
+          "obligation_id": "OB-1",
+          "outcome": "pass",
+          "reason": "Expected matches observed",
+          "tick": 10,
+          "triggered": true
+        }
+      ],
+      "coverage": [
+        {
+          "bin_id": "BIN-1",
+          "check_ids": [
+            "C-1"
+          ],
+          "event_ids": [
+            "E-1"
+          ],
+          "id": "V-1"
+        }
+      ],
+      "events": [
+        {
+          "correlation": "txn-1",
+          "epoch": 0,
+          "id": "E-1",
+          "index": 0,
+          "interface": "apb",
+          "kind": "transfer",
+          "payload": {
+            "data": {
+              "bits": "00000000000000000000000000000000",
+              "width": 32
+            }
+          },
+          "run_id": "RUN-1",
+          "tick": 10
+        }
+      ],
+      "finalization": {
+        "pending": 0,
+        "pending_by_obligation": {},
+        "reason": "complete",
+        "record_counts": {
+          "checks": 1,
+          "coverage": 1,
+          "events": 1,
+          "intents": 1
+        },
+        "status": "pass"
+      },
+      "intents": [
+        {
+          "id": "I-1",
+          "obligation_id": "OB-1",
+          "payload": {
+            "data": {
+              "bits": "10xz",
+              "width": 4
+            }
+          },
+          "stream_id": "master"
+        }
+      ],
+      "manifest": {
+        "artifacts": [],
+        "command": [
+          "fixture"
+        ],
+        "compatibility": {
+          "adapter_version": "none",
+          "catalog_digest": "115a2daf6d016218352340d6a17e03e899f05330aa7986f764a7e6002879a056",
+          "checker_digest": "model-v1",
+          "configuration_digest": "config-v1",
+          "dut_digest": "dut-v1",
+          "execution_semantics": "fixture-only",
+          "profile": "rtl",
+          "schema_major": 1
+        },
+        "dependency_digest": "stdlib-only",
+        "id": "RUN-1",
+        "replay_of": "",
+        "seeds": {
+          "root": "42"
+        },
+        "source_digest": "source-v1",
+        "time_resolution_fs": 1000,
+        "tools": {
+          "python": "3.10"
+        }
+      }
+    }
+  ]
+}

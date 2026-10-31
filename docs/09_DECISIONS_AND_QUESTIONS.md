@@ -85,3 +85,8 @@ ID and date; question; options considered; decision; evidence/experiment; affect
 ## Build reuse and regression decision - 2026-10-30
 
 - **ADR-034:** Use opt-in content-verified local cache entries, per-key process locks and private build copies. Cache only qualified default Icarus/Verilator builds with tracked dependencies; bypass unknown backend/options. Preserve public cocotb runner APIs and the active interpreter. Run independent seeds in bounded subprocess groups with admission budgets, timeout/cancellation records and unchanged evidence gates. Measure batch throughput and cache overhead; do not claim faster individual simulation or commercial cache qualification. See doc 24.
+
+
+## UCIS interchange decision - 2026-10-31
+
+- **ADR-035:** Export a bounded UCIS 1.0 functional projection with one checked bin per applicable obligation and its real at_least threshold. Keep authoritative evidence and closure status in hashed sidecars. Merge evidence first for deduplication and compatibility; never infer checker provenance from vendor XML. Validate independent reader/writer and external merge semantics separately. Retain the observed PyUCIS threshold-loss failure; do not silently patch dependencies. Commercial interoperability requires named-tool qualification. See doc 25.

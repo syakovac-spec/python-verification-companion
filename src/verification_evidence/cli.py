@@ -7,6 +7,32 @@ from .core import merge, summarize, validate
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] in ('export-ucis', 'merge-ucis', 'validate-ucis'):
+        from .ucis import export_ucis, load_export, check_projection
+        parser = argparse.ArgumentParser(description='Export/merge checked functional UCIS coverage with evidence sidecars')
+        parser.add_argument('inputs', nargs='+')
+        parser.add_argument('--output')
+        parser.add_argument('--roundtrip', help='Tool-reexported UCIS XML to compare with one export')
+        args = parser.parse_args(argv[1:])
+        try:
+            if argv[0] == 'validate-ucis':
+                if args.output or (args.roundtrip and len(args.inputs) != 1):
+                    parser.error('validate-ucis takes no output; roundtrip requires one export')
+                bundles = [load_export(path) for path in args.inputs]
+                result = check_projection(bundles[0], args.roundtrip) if args.roundtrip else dict(status='valid', exports=len(bundles))
+            else:
+                if not args.output or args.roundtrip:
+                    parser.error('export/merge requires --output and does not accept --roundtrip')
+                loader = load if argv[0] == 'export-ucis' else load_export
+                result = export_ucis([loader(path) for path in args.inputs], args.output)
+            print(json.dumps(result, sort_keys=True))
+            return 0
+        except (EvidenceError, ValueError, TypeError, KeyError) as exc:
+            print(json.dumps({'status': 'invalid', 'error': str(exc)}), file=sys.stderr)
+            return 2
+        except OSError as exc:
+            print(json.dumps({'status': 'infrastructure_error', 'error': str(exc)}), file=sys.stderr)
+            return 4
     if argv and argv[0] == 'create-agent':
         from .scaffold import create_agent
         generator = argparse.ArgumentParser(description='Generate an editable ready/valid agent kit')

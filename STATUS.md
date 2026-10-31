@@ -1,5 +1,14 @@
 # Publication candidate status
 
+## UCIS functional interchange - 2026-10-31
+
+Implemented standard-library UCIS 1.0 XML export, evidence-aware merge and artifact/round-trip checks through export-ucis, merge-ucis and validate-ucis. Stable functional scopes/bins retain eligible checked counts and per-obligation thresholds. Full evidence and summaries preserve checker links, raw exclusions, failures and incomplete runs. Merge deduplicates run IDs and enforces existing compatibility. See docs/25_UCIS_INTERCHANGE.md and evidence/ucis-summary.json.
+
+Qualification: 89 tests pass on Linux Python 3.11.18; Windows Python 3.10.7 passes with four platform/optional-dependency skips. PyUCIS 0.2.0.22787133465 validates XML against its UCIS XSD and preserves counts/goals through public reader/writer APIs. Five exported databases qualify: a synthetic two-run merge and four existing Icarus/cocotb plain/pyuvm positive/corrupt stream bundles. Corrupt runs retain failed gates. The independent PyUCIS DbMerger sums counts but drops goal 3 to 1; the semantic checker correctly rejects that result. Safe evidence-first merging retains goal 3. No dependency monkey patch or silent correction is used.
+
+Commands: python -m unittest discover -s tests -q; python scripts/qualify_ucis.py EXPORT --out CHECK; add --external-merge for disjoint compatible exported runs. Synthetic input fixtures and full reproduction steps are in doc 25. Core-only wheel installation and installed-CLI export/validation pass without PyUCIS. Commercial UCIS importer/database execution is unavailable locally; INT-003's named commercial-tool round-trip acceptance remains open. This is a functional subset, not native binary database writing or reconstruction of evidence from arbitrary UCIS. M5 and EXT-04 remain open.
+
+
 ## EXT-03 build caching and parallel regressions - 2026-10-30
 
 Implemented opt-in content/tool/environment keyed build reuse with per-key process locking, integrity checks and private build copies. Added bounded parallel tests/seeds, CPU/memory/license admission budgets, process-group timeout/cancellation and retained failed/incomplete outcomes. Public benchmark exports retain optional worker/cache settings and seeds; comparison rejects mismatched scheduling settings. See docs/24_BUILD_CACHE_AND_REGRESSIONS.md and evidence/cache-regression-summary.json.

@@ -12,6 +12,8 @@ For repeated tests and seeds, see [build caching and bounded parallel regression
 
 ## Install
 
+For commercial coverage-tool interchange, see [UCIS functional coverage export and merge](docs/25_UCIS_INTERCHANGE.md). `vevidence export-ucis` writes UCIS 1.0 XML plus authoritative evidence; `merge-ucis` preserves goals and deduplicates runs. Independent PyUCIS read/write qualification is available; commercial importer qualification remains open.
+
 Use your existing Python or conda environment. The runners use its interpreter and do not activate another environment. Select your simulator with `--sim vcs`, `--sim verilator`, `--sim questa`, or `SIM`; Icarus is the default only. See [simulator portability, conda and solver profiling](docs/19_SIMULATOR_PORTABILITY.md) for the tested matrix, VCS setup and the race-free sampling contract.
 
 Download this repository as a ZIP and extract it, or clone it:

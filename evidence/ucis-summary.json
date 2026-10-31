@@ -1,0 +1,264 @@
+{
+  "date": "2026-10-31",
+  "scope": "UCIS 1.0 checked-functional projection; no commercial execution",
+  "roundtrip_qualification": {
+    "pyucis": "0.2.0.22787133465",
+    "python": "3.11.18",
+    "commercial_tools": "not_executed",
+    "roundtrips": [
+      {
+        "index": 0,
+        "qualified": true,
+        "input_sha256": "0f82e6db4d97412bf88947644d42b993b576488bb98b2e7cac8ca0a837136549",
+        "status": "compatible_projection",
+        "coverpoints": 1,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      },
+      {
+        "index": 1,
+        "qualified": true,
+        "input_sha256": "2b07923dd1f2a166d58e3264e8678fc75e0195ef3e43788b8c3fb16b5e24ac77",
+        "status": "compatible_projection",
+        "coverpoints": 4,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      },
+      {
+        "index": 2,
+        "qualified": true,
+        "input_sha256": "a1ddae398841d8b4796118156a8ba753ca197a8a72d436ded3663da4329e61a6",
+        "status": "compatible_projection",
+        "coverpoints": 4,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      },
+      {
+        "index": 3,
+        "qualified": true,
+        "input_sha256": "23510015ef26dc865925b9b8ba34a68275f401b096781794c4d903cc43173296",
+        "status": "compatible_projection",
+        "coverpoints": 4,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      },
+      {
+        "index": 4,
+        "qualified": true,
+        "input_sha256": "fa3a9a040e6f07b1904a34e755fc0d9b2de6f8d1160c88aabf0ab08c3b8deea3",
+        "status": "compatible_projection",
+        "coverpoints": 4,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      }
+    ],
+    "external_merge": "not_requested",
+    "qualified": true
+  },
+  "external_merge_qualification": {
+    "pyucis": "0.2.0.22787133465",
+    "python": "3.11.18",
+    "commercial_tools": "not_executed",
+    "roundtrips": [
+      {
+        "index": 0,
+        "qualified": true,
+        "input_sha256": "0f3e014ee147fc1a3b9caba4ad2811c53945b8407f436112e3c4788b9161a458",
+        "status": "compatible_projection",
+        "coverpoints": 1,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      },
+      {
+        "index": 1,
+        "qualified": true,
+        "input_sha256": "a6c8ea246b70dee8b6356e9a186239d88e79de482d40a75445aa2aa412568d1a",
+        "status": "compatible_projection",
+        "coverpoints": 1,
+        "qualification": "functional counts/goals only; evidence sidecar remains authoritative"
+      }
+    ],
+    "external_merge": {
+      "qualified": false,
+      "error": "UCIS round-trip changed functional bin counts, identities or goals"
+    },
+    "qualified": false
+  },
+  "source_sha256": {
+    "src/verification_evidence/ucis.py": "b115f7114f7a4781c45e3c57efbbbaeaddc1467660482d9094435b5aff5946e5",
+    "scripts/qualify_ucis.py": "799d858d612bd051dd6d5d51efb86b994da659db3445a63e605abf7c5a0acac7"
+  },
+  "unit_tests": {
+    "linux": {
+      "tests": 89,
+      "skips": 0
+    },
+    "windows": {
+      "tests": 89,
+      "skips": 4
+    }
+  },
+  "cases": {
+    "safe-merged": {
+      "gate": "incomplete",
+      "bins": {
+        "ob_56946ffe1509eabc3bd7ba78e5bcf615339f7c3bb8a66030c6dc7809646105d7": {
+          "obligation": "OB-1",
+          "count": 2,
+          "goal": 3
+        }
+      },
+      "runs": [
+        {
+          "id": "RUN-1",
+          "status": "pass",
+          "pending": 0,
+          "replay_of": ""
+        },
+        {
+          "id": "RUN-2",
+          "status": "pass",
+          "pending": 0,
+          "replay_of": ""
+        }
+      ]
+    },
+    "plain-corrupt-0": {
+      "gate": "pass",
+      "bins": {
+        "ob_5482ad2ec82fd60781c3bd8e802a675fd46c41f6c16abc989a78c3a4283c54a7": {
+          "obligation": "DRAIN",
+          "count": 1,
+          "goal": 1
+        },
+        "ob_243656e9a36ec0438eccc00d9dc2f364fd6ef4fa197fc4e2d238e2c0357ce474": {
+          "obligation": "HOLD.rx",
+          "count": 43,
+          "goal": 2
+        },
+        "ob_f797ee59a5d90d8088a9c3b910a3b02279c02fbea3cdde251c7fef6814c00e65": {
+          "obligation": "HOLD.tx",
+          "count": 32,
+          "goal": 2
+        },
+        "ob_05d3799e8d57826848dafee94fadf9f5c9ff5a3939aa76cf77307fca530ffed7": {
+          "obligation": "ORDER",
+          "count": 24,
+          "goal": 8
+        }
+      },
+      "runs": [
+        {
+          "id": "6db9e2a3-3046-4a64-811c-aa27afea80d9",
+          "status": "pass",
+          "pending": 0,
+          "replay_of": ""
+        }
+      ]
+    },
+    "plain-corrupt-1": {
+      "gate": "failed",
+      "bins": {
+        "ob_5482ad2ec82fd60781c3bd8e802a675fd46c41f6c16abc989a78c3a4283c54a7": {
+          "obligation": "DRAIN",
+          "count": 0,
+          "goal": 1
+        },
+        "ob_243656e9a36ec0438eccc00d9dc2f364fd6ef4fa197fc4e2d238e2c0357ce474": {
+          "obligation": "HOLD.rx",
+          "count": 0,
+          "goal": 2
+        },
+        "ob_f797ee59a5d90d8088a9c3b910a3b02279c02fbea3cdde251c7fef6814c00e65": {
+          "obligation": "HOLD.tx",
+          "count": 0,
+          "goal": 2
+        },
+        "ob_05d3799e8d57826848dafee94fadf9f5c9ff5a3939aa76cf77307fca530ffed7": {
+          "obligation": "ORDER",
+          "count": 0,
+          "goal": 8
+        }
+      },
+      "runs": [
+        {
+          "id": "4848a7b8-04b3-4903-956e-5ca9850bf20f",
+          "status": "fail",
+          "pending": 0,
+          "replay_of": ""
+        }
+      ]
+    },
+    "uvm-corrupt-0": {
+      "gate": "pass",
+      "bins": {
+        "ob_5482ad2ec82fd60781c3bd8e802a675fd46c41f6c16abc989a78c3a4283c54a7": {
+          "obligation": "DRAIN",
+          "count": 1,
+          "goal": 1
+        },
+        "ob_243656e9a36ec0438eccc00d9dc2f364fd6ef4fa197fc4e2d238e2c0357ce474": {
+          "obligation": "HOLD.rx",
+          "count": 43,
+          "goal": 2
+        },
+        "ob_f797ee59a5d90d8088a9c3b910a3b02279c02fbea3cdde251c7fef6814c00e65": {
+          "obligation": "HOLD.tx",
+          "count": 32,
+          "goal": 2
+        },
+        "ob_05d3799e8d57826848dafee94fadf9f5c9ff5a3939aa76cf77307fca530ffed7": {
+          "obligation": "ORDER",
+          "count": 24,
+          "goal": 8
+        }
+      },
+      "runs": [
+        {
+          "id": "b5c707d6-6917-46ae-b1b2-04593114a511",
+          "status": "pass",
+          "pending": 0,
+          "replay_of": ""
+        }
+      ]
+    },
+    "uvm-corrupt-1": {
+      "gate": "failed",
+      "bins": {
+        "ob_5482ad2ec82fd60781c3bd8e802a675fd46c41f6c16abc989a78c3a4283c54a7": {
+          "obligation": "DRAIN",
+          "count": 0,
+          "goal": 1
+        },
+        "ob_243656e9a36ec0438eccc00d9dc2f364fd6ef4fa197fc4e2d238e2c0357ce474": {
+          "obligation": "HOLD.rx",
+          "count": 0,
+          "goal": 2
+        },
+        "ob_f797ee59a5d90d8088a9c3b910a3b02279c02fbea3cdde251c7fef6814c00e65": {
+          "obligation": "HOLD.tx",
+          "count": 0,
+          "goal": 2
+        },
+        "ob_05d3799e8d57826848dafee94fadf9f5c9ff5a3939aa76cf77307fca530ffed7": {
+          "obligation": "ORDER",
+          "count": 0,
+          "goal": 8
+        }
+      },
+      "runs": [
+        {
+          "id": "720223e9-c3d1-4f36-ba6f-2c2b8614cddb",
+          "status": "fail",
+          "pending": 0,
+          "replay_of": ""
+        }
+      ]
+    }
+  },
+  "external_merge_actual": {
+    "ob_56946ffe1509eabc3bd7ba78e5bcf615339f7c3bb8a66030c6dc7809646105d7": {
+      "count": 2,
+      "goal": 1
+    }
+  },
+  "wheel": {
+    "core_only_install": true,
+    "export_and_validate": true,
+    "sha256": "91a437c5ab8cf005838208ebebc062efdc432106b6aa985f5c77ad7f02c17c48"
+  }
+}

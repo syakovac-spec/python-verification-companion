@@ -141,3 +141,14 @@ These workstreams are optional extensions, not prerequisites for agent creation,
 ## Completion and handoff rules
 
 Keep M5's outstanding schema-migration and independent release-hardening work visible in [STATUS](../STATUS.md). This backlog expands M6; it does not replace existing acceptance criteria. For each selected item, record scope, dependencies, commands, measurements, positive/negative tests, supported combinations and limitations. Check off an item only after its acceptance evidence exists, and link that evidence here or from STATUS. Preserve the active Python/conda environment, backend selection, independent checking and conservative evidence semantics throughout.
+
+
+## UCIS interoperability - owner-prioritized 2026-10-31
+
+- [x] UCIS 1.0 functional XML export with authoritative evidence sidecars.
+- [x] Compatible evidence-aware merge, run deduplication, threshold preservation and external round-trip checker.
+- [x] Independent PyUCIS schema/read/write qualification and detection of external merge goal loss.
+- [ ] Qualify named commercial importer/database versions and document their native merge routes.
+- [ ] Add further UCIS metrics only with separate semantics and validation.
+
+See [UCIS interchange](25_UCIS_INTERCHANGE.md); this does not replace EXT-04 or declare commercial qualification complete.

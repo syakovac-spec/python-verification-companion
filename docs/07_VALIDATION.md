@@ -22,7 +22,7 @@ Measure runtime and artifact size on a named machine/workload. Record whether tr
 | Plain cocotb evidence | Same schema, no pyuvm requirement | M5 example | Planned |
 | Second simulator | Select after pilot works | Same functional scenarios; differences documented | Deferred |
 | Gate timing | Named simulator, cell library and SDF profile | Annotation, timing-check, reset and X/Z probes | Deferred |
-| UCIS exchange | Named tool/version and supported subset | Round-trip semantic comparison | Deferred |
+| UCIS exchange | UCIS 1.0 checked-functional subset; PyUCIS 0.2.0.22787133465 | Schema/read/write round trips pass; independent merger threshold loss detected; see doc 25 | Commercial tool qualification open |
 
 Replace planned labels with exact versions only after execution. A row may be experimental without being supported. CI should run pure-Python semantic tests independently of simulator jobs; integration jobs must make missing required simulators visible rather than silently skipping them.
 
