@@ -1,5 +1,5 @@
 """Independent streaming scoreboard, reusable by pyuvm and plain cocotb."""
-from collections import deque
+from verification_evidence.scoreboard import Scoreboard, Comparison
 from verification_evidence.model import Catalog, Requirement, Checker, Bin, Obligation
 
 
@@ -19,11 +19,18 @@ class StreamModel:
     def __init__(self, recorder, interface="pipe0"):
         self.recorder = recorder
         self.interface = interface
-        self.pending = deque()
+        self.matcher = Scoreboard(recorder, interface=interface, obligation="ORDER",
+            drain_obligation="DRAIN", checker="stream-model", kind="stream",
+            predictor=lambda p: p["data"]["bits"],
+            comparator=lambda expected, p: Comparison(
+                "pass" if p["data"]["bits"] == expected else "fail", "observed FIFO data/order"))
         self.epoch = 0
         self.reset_active = False
         self.previous = {}
-        self.serial = 0
+
+    @property
+    def pending(self):
+        return self.matcher.pending
 
     def event(self, port, tick, correlation, signals):
         return self.recorder.observe(interface=self.interface, epoch=self.epoch, correlation=correlation,
@@ -38,8 +45,8 @@ class StreamModel:
         reset, valid, ready, data = (signals[n] for n in ("reset", "valid", "ready", "data"))
         if reset == "0":
             if not self.reset_active:
-                self.epoch += 1
-                self.pending.clear()  # reset explicitly discards in-flight work by this DUT contract
+                self.matcher.reset(tick, cancel=True)
+                self.epoch = self.matcher.epoch
                 self.previous.clear()
             self.reset_active = True
             return
@@ -57,21 +64,13 @@ class StreamModel:
         self.previous[port] = dict(signals)
         if valid != "1" or ready != "1":
             return
+        payload = {"channel": port, **{
+            name: {"width": len(bits), "bits": bits} for name, bits in signals.items()}}
         if port == "tx":
-            correlation = f"transfer-{self.serial}"
-            self.serial += 1
-            e = self.event(port, tick, correlation, signals)
-            self.pending.append((e, data, correlation))
+            self.matcher.request(payload, tick=tick)
         else:
-            if self.pending:
-                input_id, expected, correlation = self.pending.popleft()
-                e = self.event(port, tick, correlation, signals)
-                self.check("ORDER", [input_id, e], tick, "pass" if data == expected else "fail", "observed FIFO data/order")
-            else:
-                e = self.event(port, tick, f"unexpected-{tick}", signals)
-                self.check("ORDER", [e], tick, "fail", "output with no accepted input")
+            self.matcher.response(payload, tick=tick)
 
     def finish(self, tick, error=None):
-        e = self.event("shutdown", tick, "drain", {})
-        self.check("DRAIN", [e], tick, "fail" if self.pending else "pass", "outstanding observed input transfers")
-        return self.recorder.finish(pending_by_obligation={"DRAIN": len(self.pending)} if self.pending else {}, error=error)
+        pending = self.matcher.close(tick)
+        return self.recorder.finish(pending_by_obligation=pending, error=error)

@@ -103,8 +103,10 @@ the same named bins/goals before compatibility can be claimed.
 
 Record the vendor, version, import/merge commands, diagnostics, counts/goals and
 round-trip result. There are no fabricated generic VCS/Questa/Xcelium import
-commands: their installed workflows must be qualified. Native commercial binary
-database writing and arbitrary vendor-database import are not implemented.
+commands: their installed workflows must be qualified. The newer
+[structural and VCS database guide](26_STRUCTURAL_AND_VCS_DATABASES.md) describes
+executed structural UCIS export and the VCS-native writer path awaiting licensed-host
+qualification. Arbitrary vendor-database import is not implemented.
 
 ## Reproducible merge probe
 

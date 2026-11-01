@@ -24,6 +24,7 @@ def build_flags():
 
 
 def configure(parser):
+    parser.add_argument('--hdl-coverage',help='VCS native structural metrics, e.g. line+cond+fsm+tgl+branch')
     parser.add_argument("--build-cache", help="opt-in local Linux build cache (qualified backends only)")
     parser.add_argument("--sim", default=simulator(), help="cocotb simulator name; defaults to SIM or icarus")
     parser.add_argument("--build-arg", action="append", default=[], help="additional compiler argument (use --build-arg=-flag)")
@@ -31,9 +32,17 @@ def configure(parser):
 
 
 def select(args):
+    if getattr(args,'hdl_coverage',None):
+        if args.sim.lower()!='vcs':
+            raise ValueError('--hdl-coverage currently instruments VCS; other simulators use their native collection flow')
+        from .vcs_coverage import instrumentation
+        instrumentation(args.hdl_coverage,Path.cwd()/'coverage.vdb')
+        os.environ['PVC_HDL_COVERAGE']=args.hdl_coverage
     if getattr(args, 'build_cache', None):
         os.environ['PVC_BUILD_CACHE'] = str(Path(args.build_cache).resolve())
     os.environ["SIM"] = args.sim.lower()
+    if os.environ.get('PVC_HDL_COVERAGE') and args.sim.lower()!='vcs':
+        raise ValueError('PVC_HDL_COVERAGE requires VCS; unset it for another backend')
     # Workers inherit these values. Do not erase options when reparsing a worker.
     if args.build_arg:
         os.environ["PVC_BUILD_ARGS"] = json.dumps(args.build_arg)
@@ -69,11 +78,16 @@ def vcs_make_command(*, sources, top, parameters, out, module, plusargs):
         import cocotb.config
         makefiles = Path(cocotb.config.share_dir) / "makefiles"
     flags = build_flags() + [f"-pvalue+{top}.{key}={value}" for key, value in parameters.items()]
+    coverage=[]
+    if os.environ.get('PVC_HDL_COVERAGE'):
+        from .vcs_coverage import instrumentation
+        coverage=instrumentation(os.environ['PVC_HDL_COVERAGE'],out/'coverage.vdb')
+        flags += coverage
     return ["make", "-f", str(makefiles / "Makefile.sim"), "SIM=vcs", "TOPLEVEL_LANG=verilog",
             f"TOPLEVEL={top}", f"COCOTB_TOPLEVEL={top}", f"MODULE={module}", f"COCOTB_TEST_MODULES={module}",
             "VERILOG_SOURCES=" + " ".join(str(p) for p in sources), f"SIM_BUILD={out / 'build'}",
             f"COCOTB_RESULTS_FILE={out / 'results.xml'}", "COMPILE_ARGS=" + " ".join(flags),
-            "SIM_ARGS=" + " ".join(json.loads(os.environ.get("PVC_TEST_ARGS", "[]"))),
+            "SIM_ARGS=" + " ".join(json.loads(os.environ.get("PVC_TEST_ARGS", "[]"))+coverage),
             "PLUSARGS=" + " ".join(plusargs)]
 
 
@@ -103,6 +117,10 @@ def run(*, sources, top, parameters, out, module, test_dir, extra_env, seed=42, 
             env["RANDOM_SEED"] = env["COCOTB_RANDOM_SEED"] = str(seed)
             subprocess.run(vcs_make_command(sources=sources, top=top, parameters=parameters,
                            out=out, module=module, plusargs=plusargs), cwd=out, env=env, check=True)
+            if os.environ.get('PVC_HDL_COVERAGE'):
+                from .vcs_coverage import database_inventory
+                timing['hdl_coverage']=dict(format='vcs-vdb',metrics=os.environ['PVC_HDL_COVERAGE'],
+                    files=database_inventory(out/'coverage.vdb'),status='native_created_unverified')
         else:
             try:
                 from cocotb_tools.runner import get_runner

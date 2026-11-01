@@ -1,0 +1,78 @@
+{
+  "qualified": true,
+  "commercial_tools": "not_executed",
+  "tool_version": "Verilator 5.052 2026-09-05 rev v5.052",
+  "source_sha256": {
+    "probe.sv": "37f0c70b3ae5a52932b991c46a5fc4d9ca0c145e7e03b9ce8eb8f87acadc0544",
+    "main.cpp": "2174b4990c2e3358cd3d2665f97315b3a93769d36927ea27522c1e37c4b9cc84"
+  },
+  "pyucis": "0.2.0.22787133465",
+  "date": "2026-11-01",
+  "runs": [
+    {
+      "status": "exported",
+      "run_status": "pass",
+      "metrics": {
+        "line": {
+          "points": 6,
+          "hit": 4,
+          "zero": 2,
+          "hits": 14
+        },
+        "toggle": {
+          "points": 24,
+          "hit": 13,
+          "zero": 11,
+          "hits": 41
+        }
+      },
+      "case": "partial",
+      "roundtrip": {
+        "status": "valid_structural_projection",
+        "points": 30,
+        "run_status": "pass"
+      }
+    },
+    {
+      "status": "exported",
+      "run_status": "pass",
+      "metrics": {
+        "line": {
+          "points": 6,
+          "hit": 6,
+          "zero": 0,
+          "hits": 26
+        },
+        "toggle": {
+          "points": 24,
+          "hit": 19,
+          "zero": 5,
+          "hits": 88
+        }
+      },
+      "case": "full",
+      "roundtrip": {
+        "status": "valid_structural_projection",
+        "points": 30,
+        "run_status": "pass"
+      }
+    }
+  ],
+  "tests": {
+    "linux": {
+      "run": 95,
+      "skipped": 0,
+      "status": "pass"
+    },
+    "windows": {
+      "run": 95,
+      "skipped": 5,
+      "status": "pass"
+    }
+  },
+  "reproduce": "python scripts/qualify_structural.py --out /tmp/structural-probe --pyucis",
+  "limitations": [
+    "Native VCS compilation, VDB bin/threshold inspection and URG merge require a licensed host; not executed.",
+    "Structural counters do not establish functional closure."
+  ]
+}

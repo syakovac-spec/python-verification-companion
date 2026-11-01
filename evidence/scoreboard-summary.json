@@ -1,0 +1,391 @@
+{
+  "date": "2026-11-01",
+  "qualified": true,
+  "scope": "EXT-04 one-response FIFO and unique-tag matching",
+  "rtl_cases": [
+    {
+      "mode": "uvm",
+      "corrupt": 0,
+      "qualified": true,
+      "gate": "pass",
+      "failed": [],
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "suite": "ordered-icarus",
+      "source_digest": "2611bb7034201d62375ad94e62a5157fe951541992d76b9a218b93cbd6e82301",
+      "configuration_digest": "2ad5f848ba7e70d4f16060ee048507e6063dc762d5a1b1d0ff06a4fe3ecc388c"
+    },
+    {
+      "mode": "uvm",
+      "corrupt": 1,
+      "qualified": true,
+      "gate": "failed",
+      "failed": [
+        "ORDER"
+      ],
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "suite": "ordered-icarus",
+      "source_digest": "2611bb7034201d62375ad94e62a5157fe951541992d76b9a218b93cbd6e82301",
+      "configuration_digest": "96a327535e365b0942ae0a8796d46c3114e12b2f754c3b5de072f3ad4b075902"
+    },
+    {
+      "mode": "plain",
+      "corrupt": 0,
+      "qualified": true,
+      "gate": "pass",
+      "failed": [],
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "suite": "ordered-icarus",
+      "source_digest": "2611bb7034201d62375ad94e62a5157fe951541992d76b9a218b93cbd6e82301",
+      "configuration_digest": "a9ac568be9c803540f6830b4672c2d2fd8dee61b7651ba0a8db75ccf982499f8"
+    },
+    {
+      "mode": "plain",
+      "corrupt": 1,
+      "qualified": true,
+      "gate": "failed",
+      "failed": [
+        "ORDER"
+      ],
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "suite": "ordered-icarus",
+      "source_digest": "2611bb7034201d62375ad94e62a5157fe951541992d76b9a218b93cbd6e82301",
+      "configuration_digest": "d86485a9b59780edb12001db6a8d291208b884c77589348366c15fb1ad276ec9"
+    },
+    {
+      "mode": "uvm",
+      "corrupt": 0,
+      "qualified": true,
+      "gate": "pass",
+      "failed": [],
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "suite": "ordered-verilator",
+      "source_digest": "2611bb7034201d62375ad94e62a5157fe951541992d76b9a218b93cbd6e82301",
+      "configuration_digest": "6beeb1868aae35b3f49fdf3c3a2d5831f444382b33266daa17e132c23e5a4044"
+    },
+    {
+      "mode": "uvm",
+      "corrupt": 1,
+      "qualified": true,
+      "gate": "failed",
+      "failed": [
+        "ORDER"
+      ],
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "suite": "ordered-verilator",
+      "source_digest": "2611bb7034201d62375ad94e62a5157fe951541992d76b9a218b93cbd6e82301",
+      "configuration_digest": "1697bde60fc681a2f105259270bb0373341f4d9d035a1944fcbace7ae351f3fa"
+    },
+    {
+      "mode": "plain",
+      "corrupt": 0,
+      "qualified": true,
+      "gate": "pass",
+      "failed": [],
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "suite": "ordered-verilator",
+      "source_digest": "0b1b9d38aac2597610568fb1278de8aaff4b353b862e8a8852e7003d0dfe5005",
+      "configuration_digest": "e0c0a20e5c725169266070bb0499bfacf0fb39df0d170ce52a3d5626f29a1e69"
+    },
+    {
+      "mode": "plain",
+      "corrupt": 1,
+      "qualified": true,
+      "gate": "failed",
+      "failed": [
+        "ORDER"
+      ],
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "suite": "ordered-verilator",
+      "source_digest": "0b1b9d38aac2597610568fb1278de8aaff4b353b862e8a8852e7003d0dfe5005",
+      "configuration_digest": "a1ca8c4ad9f6b7cf968fe12abb42e4722ab79db527852eac59037110b2fcd392"
+    },
+    {
+      "case": "reordered",
+      "qualified": true,
+      "gate": "pass",
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "failed": [],
+      "reasons": [],
+      "suite": "tagged-icarus",
+      "source_digest": "cc523c179d450d319fbf795859cb7d603936ab3df15b71323ef0c553e7ac03c6",
+      "configuration_digest": "7b2c657929b19865c339635e7dbbb76c0de7225c0e0907194c33258f6f6f7aee"
+    },
+    {
+      "case": "wrong-data",
+      "qualified": true,
+      "gate": "failed",
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "failed": [
+        "MATCH"
+      ],
+      "reasons": [
+        "observed input XOR 0x5a"
+      ],
+      "suite": "tagged-icarus",
+      "source_digest": "cc523c179d450d319fbf795859cb7d603936ab3df15b71323ef0c553e7ac03c6",
+      "configuration_digest": "a78bceb7b62ae0d1b6c8efccfd6344eb942fce1f249c48816f386bc343e07a87"
+    },
+    {
+      "case": "forbidden-reorder",
+      "qualified": true,
+      "gate": "failed",
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "failed": [
+        "MATCH"
+      ],
+      "reasons": [
+        "response reordered when forbidden"
+      ],
+      "suite": "tagged-icarus",
+      "source_digest": "cc523c179d450d319fbf795859cb7d603936ab3df15b71323ef0c553e7ac03c6",
+      "configuration_digest": "70cb93b8e21578e8bf265720d6ee16709f65f524aa75deea7af23aa38a8df440"
+    },
+    {
+      "case": "missing",
+      "qualified": true,
+      "gate": "failed",
+      "tools": {
+        "simulator": "icarus",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "iverilog": "Icarus Verilog version 11.0 (stable) ()",
+        "iverilog_version_output_sha256": "6e82233576ae74aa8b5ebbc7d9e4516b1863d0b0369cd1be5041201d4ad3e567",
+        "iverilog_sha256": "1ba67856249142771239573b5d51c7f6e4d67a1e7931a0d0fab56e0d473d2167",
+        "vvp": "Icarus Verilog runtime version 11.0 (stable) ()",
+        "vvp_version_output_sha256": "2f59f024407a19e358e1fd5e0b1aa548f7a73d3d6414e11c9017f200e48fb0f4",
+        "vvp_sha256": "075b114070eed3bc72e0e4559decf40520f3b693b1da9c94bba1defe8896966d"
+      },
+      "failed": [
+        "DRAIN",
+        "MATCH"
+      ],
+      "reasons": [
+        "missing response at final drain",
+        "outstanding observed requests at final drain",
+        "response deadline expired"
+      ],
+      "suite": "tagged-icarus",
+      "source_digest": "cc523c179d450d319fbf795859cb7d603936ab3df15b71323ef0c553e7ac03c6",
+      "configuration_digest": "86014a49126ef80ab483e34e7b2cf6c4d3fc05cc319753e5b9d3d887bd0a37d8"
+    },
+    {
+      "case": "reordered",
+      "qualified": true,
+      "gate": "pass",
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "failed": [],
+      "reasons": [],
+      "suite": "tagged-verilator",
+      "source_digest": "078310eb461330a64b606cf5f651cb500455536ae7e767fa982eec720289e702",
+      "configuration_digest": "2a3c841e185cc497bed8fde048285ab448c1a087a667d900d8675a4a3d9a81fa"
+    },
+    {
+      "case": "wrong-data",
+      "qualified": true,
+      "gate": "failed",
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "failed": [
+        "MATCH"
+      ],
+      "reasons": [
+        "observed input XOR 0x5a"
+      ],
+      "suite": "tagged-verilator",
+      "source_digest": "078310eb461330a64b606cf5f651cb500455536ae7e767fa982eec720289e702",
+      "configuration_digest": "423f99c5b4ebbed7d5b38f0de6b99d3a3bfa40a8f309843380a1e71b17696b3c"
+    },
+    {
+      "case": "forbidden-reorder",
+      "qualified": true,
+      "gate": "failed",
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "failed": [
+        "MATCH"
+      ],
+      "reasons": [
+        "response reordered when forbidden"
+      ],
+      "suite": "tagged-verilator",
+      "source_digest": "078310eb461330a64b606cf5f651cb500455536ae7e767fa982eec720289e702",
+      "configuration_digest": "0d9332c9a1ff0de67a5f7157f293e2f9315efef6a6daef5a0401881d21534384"
+    },
+    {
+      "case": "missing",
+      "qualified": true,
+      "gate": "failed",
+      "tools": {
+        "simulator": "verilator",
+        "python": "3.11.18",
+        "cocotb": "2.1.0",
+        "verilator": "Verilator 5.052 2026-09-05 rev v5.052",
+        "verilator_version_output_sha256": "fc0fc8408febaad19d307d10e86c9a38955b3bc2cdc7469cd2a4696d8a93c03c",
+        "verilator_sha256": "308c54eb0194bb5c95d7cc093e0491922d2455177d401b03a8224ad7efe5cf35"
+      },
+      "failed": [
+        "DRAIN",
+        "MATCH"
+      ],
+      "reasons": [
+        "missing response at final drain",
+        "outstanding observed requests at final drain",
+        "response deadline expired"
+      ],
+      "suite": "tagged-verilator",
+      "source_digest": "078310eb461330a64b606cf5f651cb500455536ae7e767fa982eec720289e702",
+      "configuration_digest": "3cfe02f1d1e62985fab356738c2002b90688b5bfe8294ac33e04dd90987b5afc"
+    }
+  ],
+  "unit_tests": {
+    "linux": {
+      "run": 109,
+      "skipped": 0,
+      "status": "pass"
+    },
+    "windows": {
+      "run": 109,
+      "skipped": 5,
+      "status": "pass"
+    }
+  },
+  "limitations": [
+    "Duplicate/stale responses indistinguishable after ID reuse require protocol identity or reset quiescence.",
+    "Burst/multi-response assembly and same-ID outstanding queues are adapter responsibilities.",
+    "Stateful hooks are exercised with a synthetic memory model, not a register abstraction layer.",
+    "Commercial simulators and complete M5 release hardening remain unqualified."
+  ],
+  "reproduction": [
+    "python -m unittest discover -s tests -q",
+    "python examples/ready_valid/run.py --sim icarus",
+    "python examples/tagged/run.py --sim icarus",
+    "python examples/ready_valid/run.py --sim verilator",
+    "python examples/tagged/run.py --sim verilator"
+  ],
+  "core_only_install": {
+    "status": "pass",
+    "wheel_sha256": "8570009e30fd08028c2fddeaea1a8d45471449dc1c9f752358974b8e61a116e8",
+    "scoreboard_tests": 14,
+    "scaffold_tests": 2,
+    "generated_contract_tests": 6,
+    "isolated_interpreter": true,
+    "executed_outside_checkout": true
+  }
+}

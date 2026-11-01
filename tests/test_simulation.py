@@ -9,6 +9,17 @@ from verification_evidence import simulation
 
 
 class SimulationTests(unittest.TestCase):
+    def test_vcs_native_coverage_at_compile_and_runtime(self):
+        config=types.ModuleType('cocotb_tools.config'); config.makefiles_dir=Path('/cocotb')
+        with patch.dict('sys.modules',{'cocotb_tools.config':config}), patch.dict(os.environ,{
+                'SIM':'vcs','PVC_BUILD_ARGS':'[]','PVC_TEST_ARGS':'[]','PVC_HDL_COVERAGE':'line+tgl'}):
+            cmd=simulation.vcs_make_command(sources=[Path('top.sv')],top='top',parameters={},
+                out=Path('/out'),module='test_top',plusargs=[])
+            for key in ('COMPILE_ARGS=','SIM_ARGS='):
+                value=next(item for item in cmd if item.startswith(key))
+                self.assertIn('-cm line+tgl',value)
+                self.assertIn('coverage.vdb',value)
+
     def test_selected_backend_has_no_icarus_flags(self):
         with patch.dict(os.environ, {"SIM": "vcs", "PVC_BUILD_ARGS": "[]"}):
             self.assertEqual(simulation.build_flags(), [])

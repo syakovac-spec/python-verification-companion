@@ -46,3 +46,5 @@ explicit adapter/model work. The RNG enforces a legal interval; general solver
 constraints and bounded adaptive coverage closure remain demonstrated by the APB
 example, not automatically synthesized here. VCS uses the shared backend adapter;
 run local qualification with a licensed installation before claiming support.
+
+The generated model uses `verification_evidence.Scoreboard` for FIFO matching and drain accounting. Edit `reference.predict` for the DUT transformation and retain the monitor-side acceptance and explicit X/Z checks. Reset cancellation follows this kit's declared discard contract. See the repository guide `docs/27_REUSABLE_SCOREBOARDS.md` for tagged matching and stateful callbacks.

@@ -64,14 +64,16 @@ Bounded implementation: see [EXT-03 guide](24_BUILD_CACHE_AND_REGRESSIONS.md) an
 
 ## EXT-04 — Reusable scoreboard library
 
-- [ ] Implement ordered/FIFO matching from accepted input observations to observed outputs.
-- [ ] Implement tagged matching with ID-indexed outstanding requests and explicitly permitted response reordering.
-- [ ] Implement stateful prediction hooks for register files, memories, counters and architectural state.
-- [ ] Support transformation callbacks so users can express behavior without rewriting matching machinery.
-- [ ] Standardize deadlines, duplicate/unexpected response detection, reset epochs/cancellation, pending-work accounting and final drain checks.
-- [ ] Automatically link predictions, observed event groups, checker outcomes and coverage evidence using valid schema correlations.
+- [x] Implement ordered/FIFO matching from accepted input observations to observed outputs.
+- [x] Implement tagged matching with ID-indexed outstanding requests and explicitly permitted response reordering.
+- [x] Implement stateful prediction hooks for register files, memories, counters and architectural state.
+- [x] Support transformation callbacks so users can express behavior without rewriting matching machinery.
+- [x] Standardize deadlines, duplicate/unexpected response detection, reset epochs/cancellation, pending-work accounting and final drain checks.
+- [x] Automatically link predictions, observed event groups, checker outcomes and coverage evidence using valid schema correlations.
 
 Acceptance: reusable implementations pass model tests and simulator examples, and detect missing, duplicate, wrong, reordered-when-forbidden, late and cross-reset responses. Expected behavior must remain independent of stimulus intent. Preserve X/Z until an explicit checker policy applies.
+
+Bounded implementation completed 2026-11-01: see [reusable scoreboards](27_REUSABLE_SCOREBOARDS.md) and `evidence/scoreboard-summary.json`. FIFO and unique-outstanding-ID matchers run in the ready/valid example, generated kits and a tagged transformation example. Stateful prediction/reset hooks are model-tested; a register abstraction layer remains EXT-09. Fourteen synthetic model tests cover the specified negative cases; 16 RTL cases qualify ordered and tagged matching on Icarus 11.0 and Verilator 5.052. Same-ID concurrent requests, burst assembly and stale-response disambiguation without protocol identity are outside this contract. Next: EXT-05 functional coverage planning and closure tools.
 
 ## EXT-05 — Functional coverage planning and closure tools
 

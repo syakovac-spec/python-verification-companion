@@ -90,3 +90,13 @@ ID and date; question; options considered; decision; evidence/experiment; affect
 ## UCIS interchange decision - 2026-10-31
 
 - **ADR-035:** Export a bounded UCIS 1.0 functional projection with one checked bin per applicable obligation and its real at_least threshold. Keep authoritative evidence and closure status in hashed sidecars. Merge evidence first for deduplication and compatibility; never infer checker provenance from vendor XML. Validate independent reader/writer and external merge semantics separately. Retain the observed PyUCIS threshold-loss failure; do not silently patch dependencies. Commercial interoperability requires named-tool qualification. See doc 25.
+
+
+## Structural coverage and native database decision - 2026-11-01
+
+- **ADR-036:** Export demonstrated Verilator line/basic-block and explicitly directional toggle counters into separate structural UCIS scopes. Preserve zero-hit points, source hashes, native data and explicit run status; structural hits cannot close functional obligations. Let installed VCS create native databases through DUT instrumentation or a generated aggregate functional-count sampler. Preserve original evidence outcomes and label created VDBs native_created_unverified until vendor bin/threshold inspection or re-export succeeds. Unsupported metrics and absent tools fail explicitly. Other vendor writers and commercial merge compatibility remain unqualified. See doc 26 and evidence/structural-summary.json.
+
+
+## Reusable scoreboard decision - 2026-11-01
+
+- **ADR-037:** Provide a standard-library matching layer over accepted monitor observations, with FIFO or unique-tag matching and explicit reordering permission. Independent prediction/comparison/reset callbacks own DUT behavior and X/Z policy. Preserve correlated input/output event groups, deadline failures, cancellation records and pending drain counts; use distinct matching/drain obligations so an empty drain cannot earn functional matching credit. Update the ready/valid example and generated template to share this implementation. Qualify tagged transformations with a separate snapshot-based RTL example. Same-ID concurrency, burst assembly and stale-ID disambiguation require protocol adapters; do not imply full AXI or register-model support. See doc 27.

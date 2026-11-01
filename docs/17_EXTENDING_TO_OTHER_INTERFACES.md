@@ -39,6 +39,8 @@ The same BFM and model run in [test_plain.py](../examples/ready_valid/test_plain
 7. Add legal random stimulus, then target uncovered scenarios with bounded sequences. The stream example uses a private seeded Python RNG for legal 8-bit values and deterministic backpressure. For relational constraints and solver-backed randomization, reuse the pattern in `examples/apb_peripheral/tb/apb_random.py`, not APB-specific fields. Give each component a stable seed/stream identity, preserve generated actions, and never promise cross-version seed equivalence.
 8. Finalize after a bounded drain. Report pending requests, failed comparisons, exceptions and unknown states. Prove checker sensitivity with deliberate corruption, dropped/extra responses, stall violations, reset interruption and X/Z tests appropriate to your protocol. Require positive tests and intended negative detections before claiming support.
 
+The [reusable scoreboard library](27_REUSABLE_SCOREBOARDS.md) supplies FIFO/unique-tag matching, transformation and stateful prediction callbacks, deadlines, reset epochs and linked checker evidence. The protocol adapter still reconstructs accepted observations and defines the independent DUT contract.
+
 ## Public evidence boundary
 
 `EvidenceRecorder(catalog, manifest)` is a standard-library-only writer. Build these schema objects using your versioned verification plan and run identity; see [model.py](../src/verification_evidence/model.py) and the complete [stream session](../examples/ready_valid/evidence.py). Its methods are:
